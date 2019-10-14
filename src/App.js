@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import $ from 'jquery';
-import backgroundVideo from "./content/video/militaryConstruction.mp4"
-// import backgroundVideo from "./content/video/tyndallHurricane.mp4"
+// import backgroundVideo from "./content/video/militaryConstruction.mp4"
+import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 
 var apiURI = "http://localhost:9000/testAPI/"
 
@@ -27,9 +26,6 @@ class App extends Component {
          "taglink-text": res["taglink-text"],
          "tagline-text": res["tagline-text"] 
       }))
-      .then(function (res) {
-        console.log(res.text())
-      })
       .catch(err => err);
   }
 
@@ -45,16 +41,15 @@ class App extends Component {
       data: {type: type},
       success: function (res){
         res = JSON.parse(res)
-        if (type == "mainpageimages"){
+        if (type === "mainpageimages"){
           // console.log("images only")
-        } else if (type == "mainpagetext"){
+        } else if (type === "mainpagetext"){
           _this.setState({ 
             "logoiconURL": res["logoicon"]["url"],
             "logo-text": res["logo-text"],
              "taglink-text": res["taglink-text"],
              "tagline-text": res["tagline-text"] 
           })
-          console.log(_this)
         }
       }
     })
@@ -91,7 +86,7 @@ class App extends Component {
         <header>
           <div className="overlay"></div>
 
-          <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+          <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
             <source src={backgroundVideo} type="video/mp4"></source>
           </video>
 
@@ -102,14 +97,14 @@ class App extends Component {
                   <img src={this.state.logoiconURL} width="22" height="22" alt=""></img>
                     <span style={brandLogo}>{this.state["logo-text"]}</span>
               </a>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="icon-menu-hamburger"></i>
+              <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i className="icon-menu-hamburger"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a className="dropdown-item" href="#">Action</a>
+                  <a className="dropdown-item" href="#">Another action</a>
+                  <a className="dropdown-item" href="#">Something else here</a>
                 </div>
               </div>
             </nav>
