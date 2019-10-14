@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import $ from 'jquery';
-// import backgroundVideo from "./content/video/militaryConstruction.mp4"
-import backgroundVideo from "./content/video/tyndallHurricane.mp4"
+import backgroundVideo from "./content/video/militaryConstruction.mp4"
+// import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 
 var apiURI = "http://localhost:9000/testAPI/"
 
@@ -16,6 +16,7 @@ class App extends Component {
       "taglink-text": "",
       "tagline-text": "" 
     };
+    this.AnimateSearch = this.AnimateSearch.bind(this);
   }
 
   callAPI() {
@@ -58,45 +59,78 @@ class App extends Component {
       }
     })
   }
+
+  AnimateSearch (){
+    // $("#searchInputText").animate({width:'100%'}, 1000)
+    // console.log('hi there')
+  }
   
 
   render() {
     // var tempstyle = {
 
-    // };
+    // }
     // style={tempstyle}
     var logotextInline = {
       color: 'white',
-      fontSize: '16px'
+      fontSize: '18px'
     };
     var navbarInline = {
       top: '5px'
     };
-    var tempstyle = {
+    var brandLogo = {
       left: '5px',
       position: 'relative'
     };
+    var tempstyle = {
+      top : '17vh'
+    }
 
     return (
       <div>
         <header>
           <div className="overlay"></div>
+
           <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
             <source src={backgroundVideo} type="video/mp4"></source>
           </video>
-          <div className="container h-100">
-            <nav class="navbar navbar-light "style={navbarInline}>
-              <a class="navbar-brand logotext" style={logotextInline} href="#"><img src={this.state.logoiconURL} width="22" height="22" alt=""></img><span style={tempstyle}>{this.state["logo-text"]}</span></a>
+
+          <div className="container">
+            
+            <nav className="navbar navbar-light "style={navbarInline}>
+              <a className="navbar-brand logotext" style={logotextInline} href="#">
+                  <img src={this.state.logoiconURL} width="22" height="22" alt=""></img>
+                    <span style={brandLogo}>{this.state["logo-text"]}</span>
+              </a>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-menu-hamburger"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
             </nav>
-            <div className="d-flex h-100 text-center align-items-center">
-              <div className="w-100 text-white">
-                <h1 className="helveticaBoldCond">{this.state["taglink-text"]}</h1>
+            </div>
+
+            <div className="d-flex container flex-column " style= {tempstyle}>
+              <div className="d-flex p-2 h-100  text-center">
+                <div className="w-100 text-white">
+                  <h1 className="helveticaBoldCond">{this.state["taglink-text"]}</h1>
+                </div>
+              </div>
+              <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
+                <input type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                <div className="input-group-append">
+                  <span className="input-group-text" id="basic-addon2">Quick Search</span>
+                </div>
               </div>
             </div>
-          </div>
+
+          
         </header>
-
-
             <div className="row blueBox">
               <div className="col-md-7 mx-auto ">
                 <p className="paragraphStyle">{this.state["tagline-text"]}</p>
