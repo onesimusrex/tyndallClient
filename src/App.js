@@ -3,6 +3,10 @@ import "./App.css";
 import $ from 'jquery';
 // import backgroundVideo from "./content/video/militaryConstruction.mp4"
 import backgroundVideo from "./content/video/tyndallHurricane.mp4"
+// import fs from 'fs'
+// import PDFParser from 'pdf2json'
+// fs = require ('fs')
+
 
 var apiURI = "http://localhost:9000/testAPI/"
 
@@ -32,6 +36,7 @@ class App extends Component {
   componentDidMount() {
     // this.callAPI();
     // this.getContent("mainpageimages", this)
+    this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
   }
 
@@ -50,6 +55,23 @@ class App extends Component {
              "taglink-text": res["taglink-text"],
              "tagline-text": res["tagline-text"] 
           })
+        } else if (type === "pdfs"){
+          console.log("printing pdf")
+          console.log(res)
+          // $.get(res.ifspdf.url, function (data){
+          //   console.log(data)
+          // })
+
+          // res.ifspdf.url
+          // var pdfParser = new PDFParser(this, 1);
+
+          // pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError))
+          // pdfParser.on("pdfParser_dataReady", pdfData => { 
+          //   // fs.writeFile("./pdf2json/test/content.txt", pdfParser.getRawTextContent())
+
+          // })
+
+          // pdfParser.loadPDF(res.ifspdf.url);
         }
       }
     })
