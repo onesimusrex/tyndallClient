@@ -37,7 +37,7 @@ class App extends Component {
   componentDidMount() {
     // this.callAPI();
     // this.getContent("mainpageimages", this)
-    this.getContent("pdfs", this)
+    // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
     // this.GetDataAPI(this);
   }
