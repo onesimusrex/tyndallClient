@@ -9,6 +9,7 @@ import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 
 
 var apiURI = "http://localhost:9000/testAPI/"
+var dataAPIURI = "http://localhost:9000/dataAPI/"
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,18 @@ class App extends Component {
     // this.getContent("mainpageimages", this)
     this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
+    // this.GetDataAPI(this);
+  }
+
+  GetDataAPI(_this){
+    $.ajax(dataAPIURI, {
+      method: "GET",
+      data: {query: "blank"},
+      success: function (res){
+        //callback
+        console.log("success calling data api");
+      }
+    })
   }
 
   getContent (type, _this){
@@ -56,8 +69,9 @@ class App extends Component {
              "tagline-text": res["tagline-text"] 
           })
         } else if (type === "pdfs"){
+          console.log ("hi out there")
           console.log("printing pdf")
-          console.log(res)
+          // console.log(res)
           // $.get(res.ifspdf.url, function (data){
           //   console.log(data)
           // })
