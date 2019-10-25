@@ -21,17 +21,20 @@ class App extends Component {
       "taglink-text": "",
       "tagline-text": "",
       "inputVal": 'random text',
-      "timeout": null 
+      "timeout": null,
+      "ifsData": {} 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
     clearTimeout(this.state.timeout)
+    var _this = this;
     this.state.timeout = setTimeout(function (){
       var val = document.getElementById("searchInputText").value
       if (val !== ""){
         console.log(val)
+        _this.GetDataAPI(val);
       }
     }, 500)
   }
@@ -41,16 +44,18 @@ class App extends Component {
     // this.getContent("mainpageimages", this)
     // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
-    this.GetDataAPI(this);
+    
   }
 
-  GetDataAPI(_this){
+  GetDataAPI(keyword){
     $.ajax(dataAPIURI, {
       method: "GET",
-      data: {query: "blank"},
+      data: {keyword: keyword},
       success: function (res){
         //callback
         console.log("success calling data api");
+        res = JSON.parse(res)
+        console.log(res)
       }
     })
   }
@@ -62,7 +67,7 @@ class App extends Component {
       success: function (res){
         res = JSON.parse(res)
         if (type === "mainpageimages"){
-          // console.log("images only")
+
         } else if (type === "mainpagetext"){
           _this.setState({ 
             "logoiconURL": res["logoicon"]["url"],
@@ -71,23 +76,7 @@ class App extends Component {
              "tagline-text": res["tagline-text"] 
           })
         } else if (type === "pdfs"){
-          console.log ("hi out there")
-          console.log("printing pdf")
-          // console.log(res)
-          // $.get(res.ifspdf.url, function (data){
-          //   console.log(data)
-          // })
 
-          // res.ifspdf.url
-          // var pdfParser = new PDFParser(this, 1);
-
-          // pdfParser.on("pdfParser_dataError", errData => console.error(errData.parserError))
-          // pdfParser.on("pdfParser_dataReady", pdfData => { 
-          //   // fs.writeFile("./pdf2json/test/content.txt", pdfParser.getRawTextContent())
-
-          // })
-
-          // pdfParser.loadPDF(res.ifspdf.url);
         }
       }
     })
