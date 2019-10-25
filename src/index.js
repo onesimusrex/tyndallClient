@@ -9,6 +9,8 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import './scripts/css/stylesheet.css';
+// import 'select2/dist/css/select2.min.css'
+// import 'select2/dist/js/select2'
 
 
 

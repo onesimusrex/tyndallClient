@@ -6,6 +6,7 @@ import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 // import fs from 'fs'
 // import PDFParser from 'pdf2json'
 // fs = require ('fs')
+import Search_card from "./components/Search_card"
 
 
 var apiURI = "http://localhost:9000/testAPI/"
@@ -18,28 +19,29 @@ class App extends Component {
       "logoiconURL": "",
       "logo-text": "",
       "taglink-text": "",
-      "tagline-text": "" 
+      "tagline-text": "",
+      "inputVal": 'random text',
+      "timeout": null 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
   }
-
-  callAPI() {
-    fetch(apiURI)
-      .then(res => res.json())
-      .then(res => this.setState({ 
-        "logo-text": res["logo-text"],
-         "taglink-text": res["taglink-text"],
-         "tagline-text": res["tagline-text"] 
-      }))
-      .catch(err => err);
+  handleChange(e){
+    // console.log(e.target.value)
+    clearTimeout(this.state.timeout)
+    this.state.timeout = setTimeout(function (){
+      var val = document.getElementById("searchInputText").value
+      if (val !== ""){
+        console.log(val)
+      }
+    }, 500)
   }
 
+
   componentDidMount() {
-    // this.callAPI();
     // this.getContent("mainpageimages", this)
     // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
-    // this.GetDataAPI(this);
+    this.GetDataAPI(this);
   }
 
   GetDataAPI(_this){
@@ -153,11 +155,13 @@ class App extends Component {
                 </div>
               </div>
               <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
-                <input type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
                 <div className="input-group-append">
                   <span className="input-group-text" id="basic-addon2">Quick Search</span>
                 </div>
+
               </div>
+              {/* <Search_card /> */}
             </div>
 
           
