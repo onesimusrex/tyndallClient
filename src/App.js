@@ -22,7 +22,8 @@ class App extends Component {
       "tagline-text": "",
       "inputVal": 'random text',
       "timeout": null,
-      "ifsData": [] 
+      "ifsData": [],
+      "sideOpen": false 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
@@ -59,15 +60,17 @@ class App extends Component {
       method: "GET",
       data: {keyword: keyword},
       success: function (res){
-        res = JSON.parse(res)
-        if (res !== null){
-          _this.setState({
-            "ifsData": res
-          }); 
+        // console.log(res.length)
+        if (res.length == 0){
+          // console.log('it was null')
+            _this.setState({
+              "ifsData": []
+            }); 
         } else {
-          _this.setState({
-            "ifsData": []
-          });
+          res = JSON.parse(res)
+            _this.setState({
+              "ifsData": res
+            }); 
         }
         console.log(_this.state.ifsData)
       }
@@ -100,21 +103,22 @@ class App extends Component {
   }
 
   openSide(e){
-    console.log(e)
-    console.log("open side")
+    // console.log(e)
+    e.preventDefault();
+    this.state.sideOpen = true;
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
     clearTimeout(this.state.timeout)
     var _this = this;
     this.state.timeout = setTimeout(function (){
-      _this.closeSide();
+      // _this.closeSide();
     }, 1500);
   }
 
   closeSide(){
-    console.log("close side")
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+      this.state.sideOpen = false;
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
   }
   
 
@@ -167,11 +171,11 @@ class App extends Component {
     return (
       <div>
         <div id="mySidenav" className="sidenav bg-dark">
-          <a href="javascript:void(0)" className="closebtn" onclick="closeNav()">&times;</a>
-          <a href="#">About</a>
+          <a href="javascript:void(0)" className="closebtn" onClick={this.closeSide}>&times;</a>
+          {/* <a href="#">About</a>
           <a href="#">Services</a>
           <a href="#">Clients</a>
-          <a href="#">Contact</a>
+          <a href="#">Contact</a> */}
         </div>
         <div id="main">
             <div>
@@ -199,7 +203,7 @@ class App extends Component {
             </div> */}
             </div>
 
-            <div className="row blueBox bg-danger">
+            <div className="row blueBox bg-dark">
               <div className="col-md-7 mx-auto ">
                 <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
             </div>
@@ -207,7 +211,7 @@ class App extends Component {
             <div className="d-flex container flex-column " style= {tempstyle}>
               <div className="d-flex p-2 h-100  text-center">
                 <div className="w-100 text-white">
-                  <h2 onClick={this.openSide} className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
+                  <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
                 </div>
               </div>
               <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
@@ -218,7 +222,7 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div style={searchArea}>{listItems}</div>
+          <div style={searchArea}>{numbers.length > 0 && listItems}</div>
         </div>
       </div>
     );
