@@ -23,11 +23,13 @@ class App extends Component {
       "inputVal": 'random text',
       "timeout": null,
       "ifsData": [],
-      "sideOpen": false 
+      "sideOpen": false,
+      "resultNumber": null 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
     this.closeSide = this.closeSide.bind(this);
+    this.GetDataAPI = this.GetDataAPI.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
@@ -40,7 +42,8 @@ class App extends Component {
         _this.GetDataAPI(val);
       } else {
         _this.setState({
-          "ifsData": []
+          "ifsData": [],
+          "resultNumber": null 
         })
       }
     }, 150);
@@ -55,6 +58,12 @@ class App extends Component {
   }
 
   GetDataAPI(keyword){
+    // console.log('api fired ')
+    if (document.getElementById("searchInputText").value != keyword){
+      document.getElementById("searchInputText").value =""
+      document.getElementById("searchInputText").value = keyword
+    }
+    
     var _this = this;
     $.ajax(dataAPIURI, {
       method: "GET",
@@ -64,12 +73,14 @@ class App extends Component {
         if (res.length == 0){
           // console.log('it was null')
             _this.setState({
-              "ifsData": []
+              "ifsData": [],
+              "resultNumber": null 
             }); 
         } else {
           res = JSON.parse(res)
             _this.setState({
-              "ifsData": res
+              "ifsData": res,
+              "resultNumber": res.length
             }); 
         }
         console.log(_this.state.ifsData)
@@ -158,6 +169,7 @@ class App extends Component {
       keyword={item.keyword}
       openSide={this.openSide}
       relevance = {item.relevance}
+      GetDataAPI = {this.GetDataAPI}
       keywords={item.keywords/*.sort(function(a, b){
         return a.relevance - a.relevance
       })*/.map(function (item1, index){
@@ -167,6 +179,8 @@ class App extends Component {
       })}
       />
     );
+
+    const resultNumMessage = "About " + this.state.resultNumber + " results"
 
     return (
       <div>
@@ -222,7 +236,10 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div style={searchArea}>{numbers.length > 0 && listItems}</div>
+          <div style={searchArea}>
+            <p className="text-muted d-flex mb-3 w-75 mx-auto">{this.state.resultNumber != null && resultNumMessage }</p>
+            {numbers.length > 0 && listItems}
+          </div>
         </div>
       </div>
     );
