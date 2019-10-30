@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 
 
-class Keyword_link extends Component {
+class Concept_link extends Component {
     constructor(props) {
       super(props);
       this.state =  { 
@@ -24,10 +24,20 @@ class Keyword_link extends Component {
   
       // }
       // style={tempstyle}
+
+      // const Keywords = (this.props) =>{
+        // const keywords = this.props.keywords;
+        // // console.log(props)
+        // const keywordItems = keywords.map((item) => {
+        //   return item
+        // })
+      // }
+      // const bodyText = this.props.body.length<300 ? this.props.body : this.props.body.slice(0,300).trim()+"..." 
+
       return (
         <a onClick={this.dbApiEvent.bind(this)} href="javascript:void(0)" className="card-link">{this.props.keyword}</a>
       );
     }
   }
   
-  export default Keyword_link;
+  export default Concept_link;

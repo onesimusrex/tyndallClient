@@ -8,6 +8,7 @@ import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 // fs = require ('fs')
 import Search_card from "./components/Search_card"
 import { restElement } from "@babel/types";    
+import SideBar from "./components/SideBar"
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -30,6 +31,7 @@ class App extends Component {
     this.openSide = this.openSide.bind(this);
     this.closeSide = this.closeSide.bind(this);
     this.GetDataAPI = this.GetDataAPI.bind(this);
+    this.SideBarHandler = this.SideBarHandler.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
@@ -54,7 +56,7 @@ class App extends Component {
     // this.getContent("mainpageimages", this)
     // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
-    
+    this.SideBarHandler();
   }
 
   GetDataAPI(keyword){
@@ -117,8 +119,8 @@ class App extends Component {
     // console.log(e)
     e.preventDefault();
     this.state.sideOpen = true;
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidenav").style.width = "500px";
+    document.getElementById("main").style.marginLeft = "500px";
     clearTimeout(this.state.timeout)
     var _this = this;
     this.state.timeout = setTimeout(function (){
@@ -130,6 +132,16 @@ class App extends Component {
       this.state.sideOpen = false;
       document.getElementById("mySidenav").style.width = "0";
       document.getElementById("main").style.marginLeft = "0";
+  }
+
+  SideBarHandler(){
+    $('.child').hide(); //Hide children by default
+
+    $('.parent').children().click(function (event) {
+        event.preventDefault();
+        $(this).children('.child').slideToggle('slow');
+        $(this).find('span').toggle();
+    });
   }
   
 
@@ -154,8 +166,7 @@ class App extends Component {
     }
     var searchArea = {
       // overflowY: 'scroll',
-      paddingTop: '10px'
-
+      // paddingTop: '10px'
     }
 
     const numbers = this.state.ifsData;
@@ -170,12 +181,17 @@ class App extends Component {
       openSide={this.openSide}
       relevance = {item.relevance}
       GetDataAPI = {this.GetDataAPI}
+      // concepts={item.concepts.filter(function(item1, index){
+      //   return index < 5;
+      // }).map(function (item1){
+      //   return item1.text;
+      // })}
       keywords={item.keywords/*.sort(function(a, b){
         return a.relevance - a.relevance
-      })*/.map(function (item1, index){
-        if (index<5){
-          return item1.text
-        }
+      })*/.filter(function (item1, index){
+        return index<5;
+      }).map(function (item1){
+        return item1.text;
       })}
       />
     );
@@ -184,13 +200,16 @@ class App extends Component {
 
     return (
       <div>
-        <div id="mySidenav" className="sidenav bg-dark">
-          <a href="javascript:void(0)" className="closebtn" onClick={this.closeSide}>&times;</a>
+        {/* <div > */}
+          
           {/* <a href="#">About</a>
           <a href="#">Services</a>
           <a href="#">Clients</a>
           <a href="#">Contact</a> */}
-        </div>
+          <SideBar 
+            closeSide = {this.closeSide}
+          />
+        {/* </div> */}
         <div id="main">
             <div>
             {/* <div className="overlay"></div>
