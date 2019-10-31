@@ -21,11 +21,11 @@ class App extends Component {
       "logo-text": "",
       "taglink-text": "",
       "tagline-text": "",
-      "inputVal": 'random text',
+      "inputVal": '',
       "timeout": null,
       "ifsData": [],
       "sideOpen": false,
-      "resultNumber": null 
+      "resultNumber": 0 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
@@ -42,10 +42,12 @@ class App extends Component {
       if (val !== ""){
         console.log(val)
         _this.GetDataAPI(val);
+
       } else {
         _this.setState({
           "ifsData": [],
-          "resultNumber": null 
+          "resultNumber": 0,
+          "inputVal": ""
         })
       }
     }, 150);
@@ -74,15 +76,19 @@ class App extends Component {
         // console.log(res.length)
         if (res.length == 0){
           // console.log('it was null')
-            _this.setState({
-              "ifsData": [],
-              "resultNumber": null 
-            }); 
+          var val = document.getElementById("searchInputText").value
+          _this.setState({
+            "ifsData": [],
+            "resultNumber": 0,
+            "inputVal": val
+          }); 
         } else {
           res = JSON.parse(res)
+          var val = document.getElementById("searchInputText").value
             _this.setState({
               "ifsData": res,
-              "resultNumber": res.length
+              "resultNumber": res.length,
+              "inputVal": val
             }); 
         }
         console.log(_this.state.ifsData)
@@ -196,7 +202,7 @@ class App extends Component {
       />
     );
 
-    const resultNumMessage = "About " + this.state.resultNumber + " results"
+    const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
       <div>
@@ -256,7 +262,7 @@ class App extends Component {
             </div>
           </div>
           <div style={searchArea}>
-            <p className="text-muted d-flex mb-3 w-75 mx-auto">{this.state.resultNumber != null && resultNumMessage }</p>
+            <p className="text-muted d-flex mb-3 w-75 mx-auto">{(this.state.inputVal != "") && resultNumMessage }</p>
             {numbers.length > 0 && listItems}
           </div>
         </div>

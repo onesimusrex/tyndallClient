@@ -34,9 +34,31 @@ class SideBar extends Component {
       // }
       // const bodyText = this.props.body.length<300 ? this.props.body : this.props.body.slice(0,300).trim()+"..." 
 
+      // https://codepen.io/marklsanders/pen/OPZXXv
+
       return (
-        <div id="mySidenav" className="container sidenav bg-dark">
-          <a href="javascript:void(0)" className="closebtn" onClick={this.props.closeSide}>&times;</a>
+        <div id="mySidenav" className="sidenav bg-transparent mb-3">
+          <a href="javascript:void(0)" className="closebtn d-flex" onClick={this.props.closeSide}>&times;</a>
+
+          <div className="text-light d-flex flex-column mb-3 w-75" id="accordion">
+
+            <div className="card bg-warning">
+              <div className="card-header" id="headingOne">
+                <h5 className="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
+                    Collapsible Group Item #1
+                  </button>
+                </h5>
+              </div>
+            </div>
+            <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div className="card-body bg-danger">
+                This is me now.
+              </div>
+            </div>
+
+          </div>
+
           {/*<ul>
             <li className="">
                 <a tabindex="-1" href="javascript:void(0)">Test 1</a>
