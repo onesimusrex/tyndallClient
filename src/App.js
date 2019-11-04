@@ -9,6 +9,7 @@ import backgroundVideo from "./content/video/tyndallHurricane.mp4"
 import Search_card from "./components/Search_card"
 import { restElement } from "@babel/types";    
 import SideBar from "./components/SideBar"
+import HoverSideMenu from "./components/HoverSideMenu"
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -32,6 +33,7 @@ class App extends Component {
     this.closeSide = this.closeSide.bind(this);
     this.GetDataAPI = this.GetDataAPI.bind(this);
     this.SideBarHandler = this.SideBarHandler.bind(this);
+    this.GetSideMenuData = this.GetSideMenuData.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
@@ -53,12 +55,17 @@ class App extends Component {
     }, 150);
   }
 
+  GetSideMenuData (){
+    var _this = this;
+    $.ajax(dataAPIURI+'/sideMenu')
+  }
 
   componentDidMount() {
     // this.getContent("mainpageimages", this)
     // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
     this.SideBarHandler();
+    this.GetSideMenuData();
   }
 
   GetDataAPI(keyword){
@@ -125,6 +132,8 @@ class App extends Component {
     // console.log(e)
     e.preventDefault();
     this.state.sideOpen = true;
+    /*
+    
     document.getElementById("mySidenav").style.width = "500px";
     document.getElementById("main").style.marginLeft = "500px";
     clearTimeout(this.state.timeout)
@@ -132,6 +141,9 @@ class App extends Component {
     this.state.timeout = setTimeout(function (){
       // _this.closeSide();
     }, 1500);
+    */
+   $("#wrapper").toggleClass("toggled");
+
   }
 
   closeSide(){
@@ -149,6 +161,8 @@ class App extends Component {
         $(this).find('span').toggle();
     });
   }
+
+
   
 
   render() {
@@ -205,18 +219,20 @@ class App extends Component {
     const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
-      <div>
+      <div className="d-flex" id="wrapper">
         {/* <div > */}
           
           {/* <a href="#">About</a>
           <a href="#">Services</a>
           <a href="#">Clients</a>
           <a href="#">Contact</a> */}
-          <SideBar 
+          {/* <SideBar 
             closeSide = {this.closeSide}
-          />
+          /> */}
+          <HoverSideMenu />
         {/* </div> */}
-        <div id="main">
+        {/* <div id="main"> */}
+        <div id="page-content-wrapper">
             <div>
             {/* <div className="overlay"></div>
             <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
@@ -242,29 +258,60 @@ class App extends Component {
             </div> */}
             </div>
 
-            <div className="row blueBox bg-dark">
-              <div className="col-md-7 mx-auto ">
-                <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
-            </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <button className="btn btn-secondary" onClick={this.openSide}>Toggle Menu</button>
 
-            <div className="d-flex container flex-column " style= {tempstyle}>
-              <div className="d-flex p-2 h-100  text-center">
-                <div className="w-100 text-white">
-                  <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li className="nav-item active">
+              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Link</a>
+            </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="#">Action</a>
+                <a className="dropdown-item" href="#">Another action</a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+            <div className="bg-dark">
+              <div className="mx-auto ">
+                <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
+              </div>
+
+              <div className="d-flex container flex-column " style= {tempstyle}>
+                <div className="d-flex p-2 h-100  text-center">
+                  <div className="w-100 text-white">
+                    <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
+                  </div>
+                </div>
+                <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
+                  <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                  <div className="input-group-append">
+                  {/* <span className="input-group-text" id="basic-addon2">Quick Search</span> */}
+                  </div>
                 </div>
               </div>
-              <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
-                <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                {/* <div className="input-group-append">
-                  <span className="input-group-text" id="basic-addon2">Quick Search</span>
-                </div> */}
-              </div>
             </div>
-          </div>
-          <div style={searchArea}>
-            <p className="text-muted d-flex mb-3 w-75 mx-auto">{(this.state.inputVal != "") && resultNumMessage }</p>
-            {numbers.length > 0 && listItems}
-          </div>
+            <div style={searchArea}>
+              <p className="text-muted d-flex mb-3 w-75 mx-auto">{(this.state.inputVal != "") && resultNumMessage }</p>
+              {numbers.length > 0 && listItems}
+            </div>
         </div>
       </div>
     );
