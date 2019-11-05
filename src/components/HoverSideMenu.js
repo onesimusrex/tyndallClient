@@ -69,7 +69,7 @@ class HoverSideMenu extends Component {
           // </div> */}
 
             <div className="list-group panel">
-                <a href="#menu1" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className="fa fa-dashboard"></i> <span className="hidden-sm-down">Item 1</span> </a>
+                <a href="#menu1" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className=""></i> <span className="hidden-sm-down">Item 1</span> </a>
                 <div className="collapse" id="menu1">
                     <a href="#menu1sub1" className="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
                     <div className="collapse" id="menu1sub1">
@@ -90,8 +90,8 @@ class HoverSideMenu extends Component {
                     <a href="#" className="list-group-item" data-parent="#menu1">Subitem 2</a>
                     <a href="#" className="list-group-item" data-parent="#menu1">Subitem 3</a>
                 </div>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-film"></i> <span className="hidden-sm-down">Item 2</span></a>
-                <a href="#menu3" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className="fa fa-book"></i> <span className="hidden-sm-down">Item 3 </span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 2</span></a>
+                <a href="#menu3" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className=""></i> <span className="hidden-sm-down">Item 3 </span></a>
                 <div className="collapse" id="menu3">
                     <a href="#" className="list-group-item" data-parent="#menu3">3.1</a>
                     <a href="#menu3sub2" className="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
@@ -102,15 +102,15 @@ class HoverSideMenu extends Component {
                     </div>
                     <a href="#" className="list-group-item" data-parent="#menu3">3.3</a>
                 </div>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-heart"></i> <span className="hidden-sm-down">Item 4</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-list"></i> <span className="hidden-sm-down">Item 5</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-clock-o"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-th"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-gear"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-calendar"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-envelope"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-bar-chart-o"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="fa fa-star"></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 4</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 5</span></a>
+                {/* <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-o"></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-chart-o"></i> <span className="hidden-sm-down">Link</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a> */}
          
         </div>
 

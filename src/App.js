@@ -10,6 +10,8 @@ import Search_card from "./components/Search_card"
 import { restElement } from "@babel/types";    
 import SideBar from "./components/SideBar"
 import HoverSideMenu from "./components/HoverSideMenu"
+// import masterFile from "./scripts/json/masterformat-2016-map.json"
+import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -34,6 +36,8 @@ class App extends Component {
     this.GetDataAPI = this.GetDataAPI.bind(this);
     this.SideBarHandler = this.SideBarHandler.bind(this);
     this.GetSideMenuData = this.GetSideMenuData.bind(this);
+    this.SideMenuUtil = this.SideMenuUtil.bind(this);
+    this.GetLevel = this.GetLevel.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
@@ -55,9 +59,130 @@ class App extends Component {
     }, 150);
   }
 
-  GetSideMenuData (){
+  SideMenuUtil (){
     var _this = this;
-    $.ajax(dataAPIURI+'/sideMenu')
+    var menu = []
+    // var masterFileL23 = JSON.parse(JSON.stringify(masterFile))
+    var masterFileL23 = []
+    // Object.keys(masterFile).map(function(key){
+    masterFile.map(function(item){  
+      var l1 = _this.GetLevel(item.code, 1);
+      var l2 = _this.GetLevel(item.code, 2)
+      var l3 = _this.GetLevel(item.code, 3)
+
+      if ((l2 == "00") && (l3 == "00")){
+        // console.log(true)
+        menu.push({code: item.code, title: item.label, children: [], level: item.level})
+        // delete masterFileL23[item.code]
+      } else masterFileL23.push(item)
+      // return (l2 == "00") && (l3 == "00")
+      return item.code;
+    })
+    // console.log(menu)
+    // console.log(masterFileL23)
+    const masterFileL3 = JSON.parse(JSON.stringify(masterFileL23))
+    masterFileL23.map(function(item){
+      var l1 = _this.GetLevel(item.code, 1);
+      var l2 = _this.GetLevel(item.code, 2)
+      var l3 = _this.GetLevel(item.code, 3)
+      
+      if (item.level == 2 || item.level == 1){
+        for (var i=0; i<menu.length; i++){
+          if (/*(_this.GetLevel(item.code, 3) == "00") && */(_this.GetLevel(menu[i].code, 1) == _this.GetLevel(item.code, 1))){
+            // console.log(true)
+            menu[i].children.push({code: item.code, title: item.label, children: [], level: item.level})
+          } /*else console.log(false)*/
+        }
+        delete masterFileL3[item.code]
+      }
+      return item;
+    })
+    console.log(masterFileL3)
+    // Object.keys(masterFileL3).map(function(key){
+    //     // var l1 = _this.GetLevel(key, 1);
+    //     // var l2 = _this.GetLevel(key, 2)
+    //     // var l3 = _this.GetLevel(key, 3)
+
+    //     for (var i=0; i<menu.length; i++){
+    //       for (var j=0; j<menu[i].length; j++){
+    //         if (_this.GetLevel(menu[i][j].key, 1) == _this.GetLevel(key, 1)){
+    //           // console.log({key: key, title: masterFileL3[key], children: []})
+    //           menu[i][j].children.push({key: key, title: masterFileL3[key], children: []})
+    //           delete masterFileL3[key]
+    //         } /*else console.log(false)*/
+    //       }
+    //     }
+        
+    //   return key;
+    // })
+    console.log(menu)
+  }
+
+  GetLevel(code, num){
+    var level = "";
+    switch (num){
+      case 1:
+        level = code.slice(0,2)  
+        break 
+      case 2:
+        level = code.slice(3,5)  
+        break
+      case 3:
+        level = code.slice(6)  
+        break  
+    }
+    return level;
+  }
+
+  GetSideMenuData (){
+    // https://github.com/outer-labs/masterformat-json
+    // console.log(masterFile)
+    var _this = this;
+    $.ajax(dataAPIURI+'/sideMenu', {
+      method: "GET",
+      success: function (res){
+        if (res.length == 0){
+          console.log("empty")
+        }else {
+          res = JSON.parse(res)
+          console.log(res)
+
+
+          /*
+          const l1 = {}
+          res.map(function(item){
+            item.heading = masterFile[item.csi]
+            if (!(l1.hasOwnProperty(parseInt(item.l1, 10)))){
+              l1[parseInt(item.l1, 10)] = []
+              l1[parseInt(item.l1, 10)].push(item)
+            } else {
+              l1[parseInt(item.l1, 10)].push(item)
+            }
+            return item
+          })
+          // console.log(Object.keys(l1))
+          const resL2 = Object.keys(l1).map(function(item){
+            var tempL2 = {}
+            l1[item].map(function(subitem){
+              if (!(tempL2.hasOwnProperty(subitem.l2))){
+                tempL2[subitem.l2] = []
+                tempL2[subitem.l2].push(subitem)
+              } else {
+                tempL2[subitem.l2].push(subitem)
+              }
+            })
+            // console.log(tempL2);
+            return tempL2
+          })
+          console.log(resL2);
+          */
+          // for (var i=0; i<l1.length; i++){
+          //   li[i]
+          // }
+          // console.log(l1)
+        }
+      }
+    })
   }
 
   componentDidMount() {
@@ -65,7 +190,8 @@ class App extends Component {
     // this.getContent("pdfs", this)
     this.getContent("mainpagetext", this)
     this.SideBarHandler();
-    this.GetSideMenuData();
+    // this.GetSideMenuData();
+    this.SideMenuUtil();
   }
 
   GetDataAPI(keyword){
@@ -184,10 +310,22 @@ class App extends Component {
     var tempstyle = {
       top : '17vh'
     }
+
+    const topPanelHeight = $('#mainTopPanel').outerHeight(false);
+    const windowHeight = $(window).height();
+    const searchAreaHeight = windowHeight - topPanelHeight;
+
     var searchArea = {
       // overflowY: 'scroll',
-      // paddingTop: '10px'
+      paddingTop: '10px',
+      height: searchAreaHeight,
+      overflowY: 'auto'
     }
+
+    var mainTopPanel = {
+      // position: 'fixed',
+    }
+    
 
     const numbers = this.state.ifsData;
     const _this =this;
@@ -257,53 +395,54 @@ class App extends Component {
             </nav>
             </div> */}
             </div>
+            <div id="mainTopPanel">
+              <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+                <button className="btn btn-secondary" onClick={this.openSide}>Toggle Menu</button>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-        <button className="btn btn-secondary" onClick={this.openSide}>Toggle Menu</button>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
 
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">Action</a>
-                <a className="dropdown-item" href="#">Another action</a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-
-            <div className="bg-dark">
-              <div className="mx-auto ">
-                <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
-              </div>
-
-              <div className="d-flex container flex-column " style= {tempstyle}>
-                <div className="d-flex p-2 h-100  text-center">
-                  <div className="w-100 text-white">
-                    <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
-                  </div>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li className="nav-item active">
+                      <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">Link</a>
+                    </li>
+                    <li className="nav-item dropdown">
+                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a className="dropdown-item" href="#">Action</a>
+                        <a className="dropdown-item" href="#">Another action</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-                <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
-                  <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                  <div className="input-group-append">
-                  {/* <span className="input-group-text" id="basic-addon2">Quick Search</span> */}
+              </nav>
+
+
+              <div className="bg-dark" >
+                <div className="mx-auto ">
+                  <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
+                </div>
+
+                <div className="d-flex container flex-column " style= {tempstyle}>
+                  <div className="d-flex p-2 h-100  text-center">
+                    <div className="w-100 text-white">
+                      <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
+                    </div>
+                  </div>
+                  <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
+                    <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                    <div className="input-group-append">
+                    {/* <span className="input-group-text" id="basic-addon2">Quick Search</span> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -312,8 +451,8 @@ class App extends Component {
               <p className="text-muted d-flex mb-3 w-75 mx-auto">{(this.state.inputVal != "") && resultNumMessage }</p>
               {numbers.length > 0 && listItems}
             </div>
+          </div>
         </div>
-      </div>
     );
   }
 }
