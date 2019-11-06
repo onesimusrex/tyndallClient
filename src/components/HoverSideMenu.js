@@ -51,11 +51,11 @@ class HoverSideMenu extends Component {
         // )
       // }
       // const bodyText = this.props.body.length<300 ? this.props.body : this.props.body.slice(0,300).trim()+"..." 
-
+      const sideMenu = this.props.sideMenu;
       return (
         // <div className="d-flex mb-3 w-75 mx-auto card bg-warning text-white">
 
-          <div className="bg-light border-right" id="sidebar-wrapper">
+        <div className="bg-light border-right" id="sidebar-wrapper">
           <div id="sidebar">
           {/* //   <div className="sidebar-heading">Start Bootstrap </div>
           //   <div className="list-group list-group-flush">
@@ -68,8 +68,80 @@ class HoverSideMenu extends Component {
           //   </div>
           // </div> */}
 
+          {/* {console.log("menu from props")}
+          {console.log(this.props.sideMenu)} */}
+
+            <div className="list-group panel">
+              {this.props.sideMenu != null && sideMenu.map((level1, index1) =>
+                <g>
+                <a href={"#menu"+(index1+1)} className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                  <i className=""></i>
+                  <span className="hidden-sm-down">
+                    {level1.code}
+                  </span>
+                  <span className="hidden-sm-down">
+                    {level1.title.length < 18 ? " | " + level1.title : " | " + level1.title.slice(0,18).trim()+"..."}
+                  </span>
+                </a>
+
+                {level1.children.map((level2, index2) =>
+                  <div className="collapse" id={"menu"+(index1+1)}>
+                      <a href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item" data-toggle="collapse" aria-expanded="false">
+                      {/* className="text-white-50" */}
+                        <span className="text-white-50">
+                          {level2.code}
+                        </span>
+                        <span >
+                        {level2.title.length < 18 ? " | " + level2.title : " | " + level2.title.slice(0,18).trim()+"..."}
+                        </span>
+                      </a>
+                      {/* {console.log(level2)} */}
+                      {level2.children.map((level3, index3) => 
+                        <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)}>
+                          <a href={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)} className="list-group-item" data-toggle="collapse" aria-expanded="false">
+
+                              <span className="text-white-50">
+                                {level3.code}
+                              </span>
+                              <span >
+                                {level3.title.length < 18 ? " | " + level3.title : " | " + level3.title.slice(0,18).trim()+"..."}
+                              </span>
+
+                          </a>
+                          <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
+                            <a href="#" className="list-group-item" data-parent={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>test</a>
+                          </div>
+                        </div>
+                      )}
+                  </div>  
+                )}
+  
+                </g>
+              )}
+              
+            </div>
+
+<div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* 
+
             <div className="list-group panel">
                 <a href="#menu1" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className=""></i> <span className="hidden-sm-down">Item 1</span> </a>
+
                 <div className="collapse" id="menu1">
                     <a href="#menu1sub1" className="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
                     <div className="collapse" id="menu1sub1">
@@ -103,7 +175,7 @@ class HoverSideMenu extends Component {
                     <a href="#" className="list-group-item" data-parent="#menu3">3.3</a>
                 </div>
                 <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 4</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 5</span></a>
+                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 5</span></a> */}
                 {/* <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-o"></i> <span className="hidden-sm-down">Link</span></a>
                 <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
                 <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
@@ -112,7 +184,7 @@ class HoverSideMenu extends Component {
                 <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-chart-o"></i> <span className="hidden-sm-down">Link</span></a>
                 <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a> */}
          
-        </div>
+        {/* </div> */}
 
         </div>
         </div>

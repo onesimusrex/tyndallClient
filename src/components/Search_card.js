@@ -47,7 +47,7 @@ class Search_card extends Component {
       const bodyText = this.props.body.length<300 ? this.props.body : this.props.body.slice(0,300).trim()+"..." 
 
       return (
-        <div className="d-flex mb-3 w-75 mx-auto card bg-warning text-white">
+        <div className="d-flex mb-3 w-75 mx-auto card bg-dark text-white">
           
             <div  className = "card-body">
               <h5 onClick={this.props.openSide} className="card-title"><a className="text-white" href='#'>{this.props.csi} | {this.props.title}</a></h5>

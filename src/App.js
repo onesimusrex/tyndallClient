@@ -28,7 +28,8 @@ class App extends Component {
       "timeout": null,
       "ifsData": [],
       "sideOpen": false,
-      "resultNumber": 0 
+      "resultNumber": 0,
+      "sideMenu": null 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
@@ -75,11 +76,8 @@ class App extends Component {
         menu.push({code: item.code, title: item.label, children: [], level: item.level})
         // delete masterFileL23[item.code]
       } else masterFileL23.push(item)
-      // return (l2 == "00") && (l3 == "00")
       return item.code;
     })
-    // console.log(menu)
-    // console.log(masterFileL23)
     const masterFileL3 = JSON.parse(JSON.stringify(masterFileL23))
     masterFileL23.map(function(item){
       var l1 = _this.GetLevel(item.code, 1);
@@ -93,29 +91,49 @@ class App extends Component {
             menu[i].children.push({code: item.code, title: item.label, children: [], level: item.level})
           } /*else console.log(false)*/
         }
-        delete masterFileL3[item.code]
+        //delete masterFileL3[item.code]
       }
       return item;
     })
-    console.log(masterFileL3)
-    // Object.keys(masterFileL3).map(function(key){
-    //     // var l1 = _this.GetLevel(key, 1);
-    //     // var l2 = _this.GetLevel(key, 2)
-    //     // var l3 = _this.GetLevel(key, 3)
+    masterFile.map(function(item){
+      var gl = _this.GetLevel;
+      var l1 = _this.GetLevel(item.code, 1);
+      var l2 = _this.GetLevel(item.code, 2)
+      var l3 = _this.GetLevel(item.code, 3)
 
-    //     for (var i=0; i<menu.length; i++){
-    //       for (var j=0; j<menu[i].length; j++){
-    //         if (_this.GetLevel(menu[i][j].key, 1) == _this.GetLevel(key, 1)){
-    //           // console.log({key: key, title: masterFileL3[key], children: []})
-    //           menu[i][j].children.push({key: key, title: masterFileL3[key], children: []})
-    //           delete masterFileL3[key]
-    //         } /*else console.log(false)*/
-    //       }
-    //     }
-        
-    //   return key;
-    // })
+      if (item.level == 3 ){
+        menu.map(function (level1, l1Index){
+          level1.children.map(function(level2, l2Index){
+            if( (gl(level2.code, 2).slice(0,1) == gl(item.code, 2).slice(0,1)) && (gl(level2.code, 1) == gl(item.code, 1) ) ){
+              level2.children.push({code: item.code, title: item.label, children: [], level: item.level})
+            }
+          })
+        })
+      }
+    })
+    masterFile.map(function(item){
+      var gl = _this.GetLevel;
+      var l1 = _this.GetLevel(item.code, 1);
+      var l2 = _this.GetLevel(item.code, 2)
+      var l3 = _this.GetLevel(item.code, 3)
+
+      if (item.level == 4 ){
+        menu.map(function (level1, l1Index){
+          level1.children.map(function(level2, l2Index){
+            level2.children.map(function(level3, l3Index){
+              if( (gl(level3.code, 2) == gl(item.code, 2)) && (gl(level3.code, 1) == gl(item.code, 1) ) ){
+                level3.children.push({code: item.code, title: item.label, children: [], level: item.level})
+              }
+            })
+          })
+        })
+      }
+    })
     console.log(menu)
+    //write menu to file to load offline
+    _this.setState({
+      "sideMenu": menu
+    })
   }
 
   GetLevel(code, num){
@@ -321,6 +339,7 @@ class App extends Component {
       height: searchAreaHeight,
       overflowY: 'auto'
     }
+    
 
     var mainTopPanel = {
       // position: 'fixed',
@@ -367,7 +386,7 @@ class App extends Component {
           {/* <SideBar 
             closeSide = {this.closeSide}
           /> */}
-          <HoverSideMenu />
+          <HoverSideMenu sideMenu={this.state.sideMenu}/>
         {/* </div> */}
         {/* <div id="main"> */}
         <div id="page-content-wrapper">
