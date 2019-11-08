@@ -72,45 +72,70 @@ class HoverSideMenu extends Component {
           {console.log(this.props.sideMenu)} */}
 
             <div className="list-group panel">
+              {/* <a href="#" className="barTitle" aria-expanded="false"> */}
+                <i className=""></i>
+                <span className="">
+                <h6 className="barTitle"><div>TECHNICAL</div> <div>GUIDELINES</div></h6>
+                </span>
+
+                {/* <div id="searchInput" className="input-group" >
+                    <input type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                    <div className="input-group-append">
+                    </div>
+                  </div> */}
+              {/* </a> */}
               {this.props.sideMenu != null && sideMenu.map((level1, index1) =>
                 <g>
-                <a href={"#menu"+(index1+1)} className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                <a csi={level1.code} href={"#menu"+(index1+1)} className="list-group-item collapsed sideLink" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
                   <i className=""></i>
                   <span className="hidden-sm-down">
                     {level1.code}
                   </span>
                   <span className="hidden-sm-down">
-                    {level1.title.length < 18 ? " | " + level1.title : " | " + level1.title.slice(0,18).trim()+"..."}
+                    {level1.title.length < 20 ? " | " + level1.title : " | " + level1.title.slice(0,20).trim()+"..."}
                   </span>
                 </a>
 
                 {level1.children.map((level2, index2) =>
                   <div className="collapse" id={"menu"+(index1+1)}>
-                      <a href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item" data-toggle="collapse" aria-expanded="false">
+                      <a csi={level2.code} href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
                       {/* className="text-white-50" */}
                         <span className="text-white-50">
                           {level2.code}
                         </span>
                         <span >
-                        {level2.title.length < 18 ? " | " + level2.title : " | " + level2.title.slice(0,18).trim()+"..."}
+                        {level2.title.length < 20 ? " | " + level2.title : " | " + level2.title.slice(0,20).trim()+"..."}
                         </span>
                       </a>
                       {/* {console.log(level2)} */}
                       {level2.children.map((level3, index3) => 
                         <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)}>
-                          <a href={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)} className="list-group-item" data-toggle="collapse" aria-expanded="false">
+                          <a csi={level3.code} href={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
 
                               <span className="text-white-50">
                                 {level3.code}
                               </span>
                               <span >
-                                {level3.title.length < 18 ? " | " + level3.title : " | " + level3.title.slice(0,18).trim()+"..."}
+                                {level3.title.length < 20 ? " | " + level3.title : " | " + level3.title.slice(0,20).trim()+"..."}
                               </span>
 
                           </a>
-                          <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
-                            <a href="#" className="list-group-item" data-parent={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>test</a>
-                          </div>
+                          {level3.children.map((level4, index4) =>
+                            <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
+                            <a csi={level4.code} href="javascript:void(0)" className="list-group-item sideLink sideResult" data-parent={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
+                              <span className="text-white-50">
+                                {level4.code}
+                              </span>
+                              <span >
+                                {level4.title.length < 20 ? " | " + level4.title : " | " + level4.title.slice(0,20).trim()+"..."}
+                              </span>
+                            </a>
+                        </div>
+                          
+                          )}
+
+
+
                         </div>
                       )}
                   </div>  

@@ -2,6 +2,11 @@
 body {
   overflow-y: hidden;
 }
+
+body, .smooth-container, #sidebar {
+  scroll-behavior: smooth;
+}
+
 #sidebar {
     height: 100vh;
     background-color: #333;
@@ -24,14 +29,34 @@ body {
     white-space: nowrap;
     text-decoration: none;
     /* added style */
-    font-size: 13px;
-    
+    font-size: 12px;
+  
 }
 
+.barTitle{
+  border-radius: 0;
+  background-color: #333;
+  color: #ccc;
+  border-left: 0;
+  border-right: 0;
+  border-color: #2c2c2c;
+  white-space: nowrap;
+  text-decoration: none;
+  /* added style */
+  font-size: 13px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ 
+}
 
 /* highlight active menu */
-#sidebar .list-group-item:not(.collapsed) {
-    background-color: #222;
+/* #sidebar .list-group-item:not(.collapsed) {
+    background-color: #333;
+} */
+
+#sidebar .list-group .list-group-item[aria-expanded="false"]{
+  padding-left: 20px;
 }
 
 /* closed state icon */
@@ -46,7 +71,8 @@ body {
 
 /* open state */
 #sidebar .list-group .list-group-item[aria-expanded="true"] {
-  background-color: #222;
+  background-color: rgb(66, 66, 66);
+  padding-left: 20px;
 }
 /* open state icon */
 #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
@@ -58,20 +84,40 @@ body {
   padding-left: 5px;
 }
 
+/* added stle */
+/* #sidebar .list-group-item .collapse{
+  padding-left: 30px;
+} */
+
 /* level 1*/
 #sidebar .list-group .collapse .list-group-item  {
-  padding-left: 20px;
+  padding-left: 30px;
+  background-color: #222;
+}
+
+
+/* added style doc*/
+#sidebar .list-group .collapse .list-group-item[aria-expanded="true"]  {
+  /* padding-left: 30px; */
+  background-color: rgb(75, 75, 75);
 }
 
 /* level 2*/
 #sidebar .list-group .collapse > .collapse .list-group-item {
-  padding-left: 30px;
+  padding-left: 40px;
+}
+
+/* level 2 added style*/
+#sidebar .list-group .collapse > .collapse .list-group-item[aria-expanded="true"] {
+  /* padding-left: 30px; */
+  background-color: rgb(100, 100, 100);
 }
 
 /* level 3*/
 #sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
-  padding-left: 40px;
+  padding-left: 50px;
 }
+
 
 @media (max-width:48em) {
     /* overlay sub levels on small screens */

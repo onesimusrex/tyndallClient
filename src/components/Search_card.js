@@ -17,6 +17,10 @@ class Search_card extends Component {
       console.log(this)
       this.props.GetDataAPI(this.props.keyword)
     }
+
+    getMenu (e){
+      this.props.openSide(this.props.csi);
+    }
   
     componentDidMount() {
     }
@@ -50,7 +54,7 @@ class Search_card extends Component {
         <div className="d-flex mb-3 w-75 mx-auto card bg-dark text-white">
           
             <div  className = "card-body">
-              <h5 onClick={this.props.openSide} className="card-title"><a className="text-white" href='#'>{this.props.csi} | {this.props.title}</a></h5>
+              <h5 id={this.props.csi} onClick={this.getMenu.bind(this)} className="card-title"><a className="text-white" href='#'>{this.props.csi} | {this.props.title}</a></h5>
               <h6 onClick={this.dbApiEvent.bind(this)} className="card-subtitle mb-2 text-muted"><a className="text-primary" href='javascript:void(0)'>{this.props.keyword}</a> (score: {this.props.relevance})</h6>
               <p className="card-text">{bodyText}</p>
               {this.props.keywords.length > 0 && keywordItems}

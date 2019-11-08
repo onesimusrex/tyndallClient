@@ -12,6 +12,7 @@ import SideBar from "./components/SideBar"
 import HoverSideMenu from "./components/HoverSideMenu"
 // import masterFile from "./scripts/json/masterformat-2016-map.json"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
+// import zenscroll from 'zenscroll';
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -27,9 +28,10 @@ class App extends Component {
       "inputVal": '',
       "timeout": null,
       "ifsData": [],
-      "sideOpen": false,
+      "sideOpen": true,
       "resultNumber": 0,
-      "sideMenu": null 
+      "sideMenu": null,
+      "currentModal": null 
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
@@ -47,7 +49,7 @@ class App extends Component {
     this.state.timeout = setTimeout(function (){
       var val = document.getElementById("searchInputText").value
       if (val !== ""){
-        console.log(val)
+        // console.log(val)
         _this.GetDataAPI(val);
 
       } else {
@@ -274,8 +276,12 @@ class App extends Component {
 
   openSide(e){
     // console.log(e)
-    e.preventDefault();
-    this.state.sideOpen = true;
+    // e.preventDefault();
+    if (this.state.sideOpen == false){
+      $("#wrapper").toggleClass("toggled");
+      this.state.sideOpen = true;
+    }
+    
     /*
     
     document.getElementById("mySidenav").style.width = "500px";
@@ -286,14 +292,43 @@ class App extends Component {
       // _this.closeSide();
     }, 1500);
     */
-   $("#wrapper").toggleClass("toggled");
+    this.setState({
+      "currentModal":e
+    })
+    var csiString = "[csi='"+e+"']"
+    var currentCsi = document.querySelector(csiString)
+    // console.log(currentCsi)
+    // $(csiString).parent().parent().parent().trigger("click");
+    
+    // var container = document.querySelector('#sidebar-wrapper')
+    // var myScroller = zenscroll.createScroller(container, 500, 30)
+    // myScroller.intoView(currentCsi)
 
+    $('.sideResult').on("click", function(){
+      // zenscroll.to(currentCsi)
+      // var container = document.querySelector('#sidebar-wrapper')
+      // var myScroller = zenscroll.createScroller(container, 500, 30)
+      // myScroller.intoView(currentCsi)
+      console.log("boom")
+    })
+
+    $(csiString).parent().parent().parent().parent().children('a').trigger("click")
+    $(csiString).parent().parent().parent().children('a').trigger("click")
+    $(csiString).parent().parent().children('a').trigger("click")
+    console.log($(csiString).parent().children('a').delay(2000))
+    $(csiString).parent().children('a').trigger("click")
+    
+    //zenscroll.to(currentCsi)
   }
 
   closeSide(){
-      this.state.sideOpen = false;
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0";
+      // if (this.state.sideOpen == true){
+        $("#wrapper").toggleClass("toggled");
+        this.state.sideOpen =  !this.state.sideOpen;
+      // }
+      
+      // document.getElementById("mySidenav").style.width = "0";
+      // document.getElementById("main").style.marginLeft = "0";
   }
 
   SideBarHandler(){
@@ -416,13 +451,13 @@ class App extends Component {
             </div>
             <div id="mainTopPanel">
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                <button className="btn btn-secondary" onClick={this.openSide}>Toggle Menu</button>
+                <button className="btn btn-secondary" onClick={this.closeSide}>MasterFormat Menu</button>
 
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
-                </button>
+                </button> */}
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li className="nav-item active">
                       <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
@@ -442,7 +477,7 @@ class App extends Component {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </nav>
 
 
