@@ -171,7 +171,8 @@ class App extends Component {
           /*
           const l1 = {}
           res.map(function(item){
-            item.heading = masterFile[item.csi]
+            item.heading = masterFile[item.csi]Bgd1608!!7
+            
             if (!(l1.hasOwnProperty(parseInt(item.l1, 10)))){
               l1[parseInt(item.l1, 10)] = []
               l1[parseInt(item.l1, 10)].push(item)
@@ -296,6 +297,7 @@ class App extends Component {
       "currentModal":e
     })
     var csiString = "[csi='"+e+"']"
+    
     var currentCsi = document.querySelector(csiString)
     // console.log(currentCsi)
     // $(csiString).parent().parent().parent().trigger("click");
@@ -312,12 +314,16 @@ class App extends Component {
       console.log("boom")
     })
 
-    $(csiString).parent().parent().parent().parent().children('a').trigger("click")
-    $(csiString).parent().parent().parent().children('a').trigger("click")
-    $(csiString).parent().parent().children('a').trigger("click")
-    console.log($(csiString).parent().children('a').delay(2000))
-    $(csiString).parent().children('a').trigger("click")
-    
+    // console.log($(csiString).parent().parent().parent().parent().children('a').trigger("click"))
+    // $(csiString).parent().parent().parent().children('a').trigger("click")
+    // $(csiString).parent().parent().children('a').trigger("click")
+
+    $(csiString).parent().siblings('a').delay().trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click")
+
+    // $(csiString).parent().siblings('a').delay(6000).trigger("click")
+    // $(csiString).parent().siblings('a').parent().siblings('a').delay(4000).trigger("click")
+    // $(csiString).parent().siblings('a').parent().siblings('a').parent().siblings('a').delay(2000).trigger("click")
+    // $(csiString).parent().siblings('a').parent().siblings('a').parent().siblings('a').parent().siblings('a').delay().trigger("click")
     //zenscroll.to(currentCsi)
   }
 

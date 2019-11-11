@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import $ from 'jquery';
 // import Keyword_link from "./Keyword_link"
 // import Concept_link from "./Keyword_link"
+import $ from 'jquery';
 
 
 
@@ -12,65 +13,77 @@ class HoverSideMenu extends Component {
       };
       // this.dbApiEvent = this.dbApiEvent.bind(this);
       this.BuildSideMenu = this.BuildSideMenu.bind(this);
+      this.LeafClickEvent = this.LeafClickEvent.bind(this);
+      this.easeInOutQuad = this.easeInOutQuad.bind(this);
     }
 
     dbApiEvent (e){
-      console.log(this)
+      console.log(this);
       // this.props.GetDataAPI(this.props.keyword)
     }
   
     componentDidMount() {
       this.BuildSideMenu();
+      this.LeafClickEvent();
     }
 
     BuildSideMenu(){
     
     }
 
-    render() {
-      // var tempstyle = {
-  
-      // }
-      // style={tempstyle}
+    LeafClickEvent(){
+      console.log("leaf handler on")
+      // $(".sideResult").on("click", function(event){
+      //   console.log("leaf clicked");
+      //   console.log(event)
+      // });
+    }
 
-      // const Keywords = (this.props) =>{
-        // const keywords = this.props.keywords;
-        // console.log(props)
-        // const keywordItems = keywords.map((item) => 
-        // <Keyword_link 
-        //   GetDataAPI = {this.props.GetDataAPI}
-        //   keyword = {item}
-        // />
-        
-        // const concepts = this.props.concepts;
-        // const conceptItems = concepts.map((item)=>
-        //   <Keyword_link
-        //     GetDataAPI = {this.props.GetDataAPI}
-        //     keyword = {item}
-        //   > 
-        // )
-      // }
-      // const bodyText = this.props.body.length<300 ? this.props.body : this.props.body.slice(0,300).trim()+"..." 
+    LeafClick(e){
+      e.preventDefault();
+      e.stopPropagation();
+      // console.log(e.target.id);
+      if (e.target.nodeName == "A"){
+        console.log("anchor")
+      } else console.log("not an anchor")
+
+      var csiString = "a[csi='"+e.target.id+"']";
+      var leafCSI = document.querySelector(csiString);
+      console.log(leafCSI)
+
+      var duration = 600;
+      var sideContainer = document.querySelector("#sidebar")
+      var to = leafCSI.offsetTop
+      var start = sideContainer.scrollTop,
+          change = to - start,
+          currentTime = 0,
+          increment = 20;
+
+      var animateScroll= function(){
+        currentTime += increment;
+        var val = this.easeInOutQuad(currentTime, start, change, duration)
+        leafCSI.scrollTop = val;
+        if (currentTime < duration){
+          setTimeout(animateScroll, increment)
+        }
+      }
+      // animateScroll();
+    }
+
+    easeInOutQuad(t, b, c, d){
+      t /= d/2;
+      if (t < 1) return c/2*t*t + b;
+      t--;
+      return -c/2 * (t*(t-2) - 1) + b;
+    }
+
+    render() {
       const sideMenu = this.props.sideMenu;
       return (
         // <div className="d-flex mb-3 w-75 mx-auto card bg-warning text-white">
 
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div id="sidebar">
-          {/* //   <div className="sidebar-heading">Start Bootstrap </div>
-          //   <div className="list-group list-group-flush">
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Dashboard</a>
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Shortcuts</a>
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Overview</a>
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Events</a>
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Profile</a>
-          //     <a href="#" className="list-group-item list-group-item-action bg-light">Status</a>
-          //   </div>
-          // </div> */}
-
-          {/* {console.log("menu from props")}
-          {console.log(this.props.sideMenu)} */}
-
             <div className="list-group panel">
               {/* <a href="#" className="barTitle" aria-expanded="false"> */}
                 <i className=""></i>
@@ -121,12 +134,13 @@ class HoverSideMenu extends Component {
 
                           </a>
                           {level3.children.map((level4, index4) =>
+                          // onClick={this.LeafClick.bind(this)}
                             <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
-                            <a csi={level4.code} href="javascript:void(0)" className="list-group-item sideLink sideResult" data-parent={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
-                              <span className="text-white-50">
+                            <a onClick={this.LeafClick.bind(this)} id={level4.code} csi={level4.code} href="javascript:void(0)" className="list-group-item sideLink sideResult" data-parent={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)}>
+                              <span onClick={this.LeafClick.bind(this)} id={level4.code} className="text-white-50">
                                 {level4.code}
                               </span>
-                              <span >
+                              <span onClick={this.LeafClick.bind(this)} id={level4.code}>
                                 {level4.title.length < 20 ? " | " + level4.title : " | " + level4.title.slice(0,20).trim()+"..."}
                               </span>
                             </a>
@@ -147,21 +161,6 @@ class HoverSideMenu extends Component {
             </div>
 
 <div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {/* 
 
             <div className="list-group panel">
