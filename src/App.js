@@ -166,41 +166,6 @@ class App extends Component {
         }else {
           res = JSON.parse(res)
           console.log(res)
-
-
-          /*
-          const l1 = {}
-          res.map(function(item){
-            item.heading = masterFile[item.csi]Bgd1608!!7
-            
-            if (!(l1.hasOwnProperty(parseInt(item.l1, 10)))){
-              l1[parseInt(item.l1, 10)] = []
-              l1[parseInt(item.l1, 10)].push(item)
-            } else {
-              l1[parseInt(item.l1, 10)].push(item)
-            }
-            return item
-          })
-          // console.log(Object.keys(l1))
-          const resL2 = Object.keys(l1).map(function(item){
-            var tempL2 = {}
-            l1[item].map(function(subitem){
-              if (!(tempL2.hasOwnProperty(subitem.l2))){
-                tempL2[subitem.l2] = []
-                tempL2[subitem.l2].push(subitem)
-              } else {
-                tempL2[subitem.l2].push(subitem)
-              }
-            })
-            // console.log(tempL2);
-            return tempL2
-          })
-          console.log(resL2);
-          */
-          // for (var i=0; i<l1.length; i++){
-          //   li[i]
-          // }
-          // console.log(l1)
         }
       }
     })
