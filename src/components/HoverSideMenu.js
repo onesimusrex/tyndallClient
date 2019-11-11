@@ -40,34 +40,40 @@ class HoverSideMenu extends Component {
     }
 
     LeafClick(e){
+      console.log(this)
+      var _this = this
       e.preventDefault();
       e.stopPropagation();
       // console.log(e.target.id);
       if (e.target.nodeName == "A"){
         console.log("anchor")
+
+        var csiString = "a[csi='"+e.target.id+"']";
+        var leafCSI = document.querySelector(csiString);
+        console.log(leafCSI)
+  
+        var duration = 600;
+        var sideContainer = document.querySelector("#sidebar")
+        var to = leafCSI.offsetTop
+        var start = sideContainer.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+  
+        var animateScroll= function(){
+          console.log("go for anim")
+          currentTime += increment;
+          var val = _this.easeInOutQuad(currentTime, start, change, duration)
+          leafCSI.scrollTop = val;
+          if (currentTime < duration){
+            setTimeout(animateScroll, increment)
+          }
+        }
+        animateScroll();
       } else console.log("not an anchor")
 
-      var csiString = "a[csi='"+e.target.id+"']";
-      var leafCSI = document.querySelector(csiString);
-      console.log(leafCSI)
 
-      var duration = 600;
-      var sideContainer = document.querySelector("#sidebar")
-      var to = leafCSI.offsetTop
-      var start = sideContainer.scrollTop,
-          change = to - start,
-          currentTime = 0,
-          increment = 20;
-
-      var animateScroll= function(){
-        currentTime += increment;
-        var val = this.easeInOutQuad(currentTime, start, change, duration)
-        leafCSI.scrollTop = val;
-        if (currentTime < duration){
-          setTimeout(animateScroll, increment)
-        }
-      }
-      // animateScroll();
+      // 
     }
 
     easeInOutQuad(t, b, c, d){

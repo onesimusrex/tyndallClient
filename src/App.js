@@ -282,7 +282,12 @@ class App extends Component {
     // console.log($(csiString).parent().parent().parent().parent().children('a').trigger("click"))
     // $(csiString).parent().parent().parent().children('a').trigger("click")
     // $(csiString).parent().parent().children('a').trigger("click")
-
+    $('.sideLink > div').attr({
+      'aria-expanded':false
+    }).addClass('collapse')
+    $('.sideLink').attr({
+      'aria-expanded':false
+    }).addClass('collapsed')
     $(csiString).parent().siblings('a').delay().trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click")
 
     // $(csiString).parent().siblings('a').delay(6000).trigger("click")
