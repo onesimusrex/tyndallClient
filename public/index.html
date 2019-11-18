@@ -27,6 +27,8 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery.360rotate.js"></script>
     <title>Tyndall IFS</title>
   </head>
   <body>
@@ -42,5 +44,25 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      $(function(){
+        ThreeSixtyRotate('.demo',{
+        imgPath: 'img3/', // Path to your product images.
+        imgEx: 'jpg', // All images must have this file extension
+        zeroPadding: 0, // Zero Padding (ex:1->0、01->1、001->2)
+        imgFirstNum: 1,
+        totalFrame: 36,
+        startFrame: 1,
+        clockwise: true, // false = counterclockwise
+        rotateSpeed: 10,
+        inertia: true,
+        autoRotate: true, // auto rotation
+        frameRate: 12,
+        overStop: true, // Pause on hover when autoRotate is true.
+        preload: true,
+        showDuration: 300
+        });
+      });
+    </script>
   </body>
 </html>

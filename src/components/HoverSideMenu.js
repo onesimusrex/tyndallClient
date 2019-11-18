@@ -104,7 +104,7 @@ class HoverSideMenu extends Component {
                   </div> */}
               {/* </a> */}
               {this.props.sideMenu != null && sideMenu.map((level1, index1) =>
-                <g>
+                <div>
                 <a csi={level1.code} href={"#menu"+(index1+1)} className="list-group-item collapsed sideLink" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
                   <i className=""></i>
                   <span className="hidden-sm-down">
@@ -161,7 +161,7 @@ class HoverSideMenu extends Component {
                   </div>  
                 )}
   
-                </g>
+                </div>
               )}
               
             </div>

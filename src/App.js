@@ -13,6 +13,7 @@ import HoverSideMenu from "./components/HoverSideMenu"
 // import masterFile from "./scripts/json/masterformat-2016-map.json"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 // import zenscroll from 'zenscroll';
+// import rotate from "./scripts/jquery.360rotate";
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -31,7 +32,8 @@ class App extends Component {
       "sideOpen": true,
       "resultNumber": 0,
       "sideMenu": null,
-      "currentModal": null 
+      "currentModal": null, 
+      "_360ModalShow": false
     };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
@@ -41,6 +43,7 @@ class App extends Component {
     this.GetSideMenuData = this.GetSideMenuData.bind(this);
     this.SideMenuUtil = this.SideMenuUtil.bind(this);
     this.GetLevel = this.GetLevel.bind(this);
+    this._360Modal = this._360Modal.bind(this);
   }
   handleChange(e){
     // console.log(e.target.value)
@@ -165,6 +168,7 @@ class App extends Component {
           console.log("empty")
         }else {
           res = JSON.parse(res)
+          console.log("sidemenu data");
           console.log(res)
         }
       }
@@ -317,8 +321,14 @@ class App extends Component {
     });
   }
 
-
-  
+  _360Modal (){
+    console.log("modal")
+    $('#myModal').modal({show: !this.state._360ModalShow});
+    this.setState({
+      _360ModalShow: !this.state._360ModalShow
+    }) 
+    
+  }
 
   render() {
     // var tempstyle = {
@@ -377,7 +387,7 @@ class App extends Component {
       keywords={item.keywords/*.sort(function(a, b){
         return a.relevance - a.relevance
       })*/.filter(function (item1, index){
-        return index<5;
+        return index<20;
       }).map(function (item1){
         return item1.text;
       })}
@@ -387,7 +397,21 @@ class App extends Component {
     const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
+      <div>
+      {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> */}
+
+      <div id="myModal" className="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-md">
+          <div className="modal-content">
+            <div class="demo">
+              <p class="load">Now Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="d-flex" id="wrapper">
+        
         {/* <div > */}
           
           {/* <a href="#">About</a>
@@ -427,8 +451,19 @@ class App extends Component {
             </div>
             <div id="mainTopPanel">
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                <button className="btn btn-secondary" onClick={this.closeSide}>MasterFormat Menu</button>
+                {/* <button className="btn btn-secondary" onClick={this.closeSide}>MasterFormat Menu</button>
+                <button className="btn btn-secondary" onClick={this._360Modal}>Model View</button> */}
 
+                <div className="collapse navbar-collapse" id="navbarNav">
+                  <ul className="navbar-nav">
+                    <li className="nav-item">
+                      <a className="nav-link" onClick={this.closeSide} href="javascript:void(0)">MasterFormat<span className="sr-only">(current)</span></a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" onClick={this._360Modal} href="javascript:void(0)">Model Viewer</a>
+                    </li>
+                  </ul>
+                </div>
                 {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                 </button> */}
@@ -482,6 +517,7 @@ class App extends Component {
               {numbers.length > 0 && listItems}
             </div>
           </div>
+        </div>
         </div>
     );
   }
