@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+
 import "./App.css";
 import $ from 'jquery';
 // import backgroundVideo from "./content/video/militaryConstruction.mp4"
@@ -14,11 +16,19 @@ import HoverSideMenu from "./components/HoverSideMenu"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
+import { simpleAction } from './redux/actions/simpleAction';
 
 //Demo of search tool, side menu and model viewer for the Tyndall Installation website.
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
+
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch (simpleAction())
+})
+const mapStateToProps = state => ({
+  ...state
+})
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +57,8 @@ class App extends Component {
     this.GetLevel = this.GetLevel.bind(this);
     this._360Modal = this._360Modal.bind(this);
   }
+
+
   handleChange(e){
     // console.log(e.target.value)
     clearTimeout(this.state.timeout)
@@ -399,130 +411,15 @@ class App extends Component {
     const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
+      
       <div>
-      {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> */}
-
-      <div id="myModal" className="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-md">
-          <div className="modal-content">
-            <div class="demo">
-              <p class="load">Now Loading...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="d-flex" id="wrapper">
-        
-        {/* <div > */}
-          
-          {/* <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a> */}
-          {/* <SideBar 
-            closeSide = {this.closeSide}
-          /> */}
-          <HoverSideMenu sideMenu={this.state.sideMenu}/>
-        {/* </div> */}
-        {/* <div id="main"> */}
-        <div id="page-content-wrapper">
-            <div>
-            {/* <div className="overlay"></div>
-            <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
-              <source src={backgroundVideo} type="video/mp4"></source>
-            </video>
-            <div className="container" >
-            <nav className="navbar navbar-light "style={navbarInline}>
-              <a className="navbar-brand logotext" style={logotextInline} href="#">
-                  <img src={this.state.logoiconURL} width="22" height="22" alt=""></img>
-                    <span style={brandLogo}>{this.state["logo-text"]}</span>
-              </a>
-              <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="icon-menu-hamburger"></i>
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a className="dropdown-item" href="#">Action</a>
-                  <a className="dropdown-item" href="#">Another action</a>
-                  <a className="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
-            </nav>
-            </div> */}
-            </div>
-            <div id="mainTopPanel">
-              <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-                {/* <button className="btn btn-secondary" onClick={this.closeSide}>MasterFormat Menu</button>
-                <button className="btn btn-secondary" onClick={this._360Modal}>Model View</button> */}
-
-                <div className="collapse navbar-collapse" id="navbarNav">
-                  <ul className="navbar-nav">
-                    <li className="nav-item">
-                      <a className="nav-link" onClick={this.closeSide} href="javascript:void(0)">MasterFormat<span className="sr-only">(current)</span></a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" onClick={this._360Modal} href="javascript:void(0)">Model Viewer</a>
-                    </li>
-                  </ul>
-                </div>
-                {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span className="navbar-toggler-icon"></span>
-                </button> */}
-
-                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li className="nav-item active">
-                      <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="#">Link</a>
-                    </li>
-                    <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                      </a>
-                      <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div> */}
-              </nav>
-
-
-              <div className="bg-dark" >
-                <div className="mx-auto ">
-                  <h4 className="paragraphStyle text-white">{this.state["tagline-text"]}</h4>
-                </div>
-
-                <div className="d-flex container flex-column " style= {tempstyle}>
-                  <div className="d-flex p-2 h-100  text-center">
-                    <div className="w-100 text-white">
-                      <h2 className="helveticaBoldCond text-white">{this.state["taglink-text"]}</h2>
-                    </div>
-                  </div>
-                  <div id="searchInput" className="d-flex input-group mb-3 w-50 mx-auto" onClick={this.AnimateSearch}>
-                    <input onKeyUp={this.handleChange.bind(this)} type="text" id="searchInputText" className="form-control" placeholder="Technical Guidelines" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                    <div className="input-group-append">
-                    {/* <span className="input-group-text" id="basic-addon2">Quick Search</span> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style={searchArea}>
-              <p className="text-muted d-flex mb-3 w-75 mx-auto">{(this.state.inputVal != "") && resultNumMessage }</p>
-              {numbers.length > 0 && listItems}
-            </div>
-          </div>
-        </div>
+        <pre>
+          {JSON.stringify(this.props)}
+        </pre>
+        <button onClick={this.simpleAction}>Test redux action</button>
         </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps) (App);
