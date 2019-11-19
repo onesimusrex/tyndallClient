@@ -15,6 +15,8 @@ import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
 
+//Demo of search tool, side menu and model viewer for the Tyndall Installation website.
+
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
 
