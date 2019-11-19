@@ -4,7 +4,8 @@ import React, { Component } from "react";
 // import Concept_link from "./Keyword_link"
 import $ from 'jquery';
 
-
+// see: https://www.codeply.com/go/q0viC0Xu3D/bootstrap-4-multilevel-sidebar-_-hover
+// see https://www.geeksforgeeks.org/hide-scroll-bar-but-while-still-being-able-to-scroll-using-css/
 
 class HoverSideMenu extends Component {
     constructor(props) {

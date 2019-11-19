@@ -24,7 +24,7 @@
 
 
 body {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 body, .smooth-container, #sidebar {
