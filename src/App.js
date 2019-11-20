@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { simpleAction } from './redux/actions/simpleAction';
 
 import "./App.css";
 import $ from 'jquery';
@@ -16,37 +17,37 @@ import HoverSideMenu from "./components/HoverSideMenu"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
-import { simpleAction } from './redux/actions/simpleAction';
+
 
 //Demo of search tool, side menu and model viewer for the Tyndall Installation website.
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
 
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch (simpleAction())
-})
 const mapStateToProps = state => ({
   ...state
+})
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch (simpleAction())
 })
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state =  { 
-      "logoiconURL": "",
-      "logo-text": "",
-      "taglink-text": "",
-      "tagline-text": "",
-      "inputVal": '',
-      "timeout": null,
-      "ifsData": [],
-      "sideOpen": true,
-      "resultNumber": 0,
-      "sideMenu": null,
-      "currentModal": null, 
-      "_360ModalShow": false
-    };
+    // this.state =  { 
+    //   "logoiconURL": "",
+    //   "logo-text": "",
+    //   "taglink-text": "",
+    //   "tagline-text": "",
+    //   "inputVal": '',
+    //   "timeout": null,
+    //   "ifsData": [],
+    //   "sideOpen": true,
+    //   "resultNumber": 0,
+    //   "sideMenu": null,
+    //   "currentModal": null, 
+    //   "_360ModalShow": false
+    // };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
     this.closeSide = this.closeSide.bind(this);
@@ -56,6 +57,17 @@ class App extends Component {
     this.SideMenuUtil = this.SideMenuUtil.bind(this);
     this.GetLevel = this.GetLevel.bind(this);
     this._360Modal = this._360Modal.bind(this);
+  }
+
+  componentDidMount() {
+    // this.getContent("mainpageimages", this)
+    // this.getContent("pdfs", this)
+    // this.GetSideMenuData();
+    /*
+    this.getContent("mainpagetext", this)
+    this.SideBarHandler();
+    this.SideMenuUtil();
+    */
   }
 
 
@@ -189,14 +201,7 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    // this.getContent("mainpageimages", this)
-    // this.getContent("pdfs", this)
-    this.getContent("mainpagetext", this)
-    this.SideBarHandler();
-    // this.GetSideMenuData();
-    this.SideMenuUtil();
-  }
+
 
   GetDataAPI(keyword){
     // console.log('api fired ')
@@ -381,34 +386,34 @@ class App extends Component {
     }
     
 
-    const numbers = this.state.ifsData;
-    const _this =this;
-    const listItems = numbers.map((item) => 
-      <Search_card 
-      title={item.title} 
-      // body={item.body.length<=300 ? '...' : ""}
-      body={item.body}
-      csi={item.csi}
-      keyword={item.keyword}
-      openSide={this.openSide}
-      relevance = {item.relevance}
-      GetDataAPI = {this.GetDataAPI}
-      // concepts={item.concepts.filter(function(item1, index){
-      //   return index < 5;
-      // }).map(function (item1){
-      //   return item1.text;
-      // })}
-      keywords={item.keywords/*.sort(function(a, b){
-        return a.relevance - a.relevance
-      })*/.filter(function (item1, index){
-        return index<20;
-      }).map(function (item1){
-        return item1.text;
-      })}
-      />
-    );
+    // const numbers = this.state.ifsData;
+    // const _this =this;
+    // const listItems = numbers.map((item) => 
+    //   <Search_card 
+    //   title={item.title} 
+    //   // body={item.body.length<=300 ? '...' : ""}
+    //   body={item.body}
+    //   csi={item.csi}
+    //   keyword={item.keyword}
+    //   openSide={this.openSide}
+    //   relevance = {item.relevance}
+    //   GetDataAPI = {this.GetDataAPI}
+    //   // concepts={item.concepts.filter(function(item1, index){
+    //   //   return index < 5;
+    //   // }).map(function (item1){
+    //   //   return item1.text;
+    //   // })}
+    //   keywords={item.keywords/*.sort(function(a, b){
+    //     return a.relevance - a.relevance
+    //   })*/.filter(function (item1, index){
+    //     return index<20;
+    //   }).map(function (item1){
+    //     return item1.text;
+    //   })}
+    //   />
+    // );
 
-    const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
+    // const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
       
