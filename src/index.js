@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
+
 import { Provider } from 'react-redux'
 import configureStore from './redux/store'
 
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // import './scripts/css/backgroundVideo.css';
@@ -23,12 +24,19 @@ import 'font-awesome/css/font-awesome.css'
 import HoverSideMenu from "./components/HoverSideMenu"
 
 
-ReactDOM.render(<HoverSideMenu />, document.getElementById('side-panel-wrap'));
+// ReactDOM.render(
+//     <Provider store = {configureStore() }>
+//         <HoverSideMenu />
+//     </Provider>
+//     , document.getElementById('side-panel-wrap')
+// );
+
 ReactDOM.render(
     <Provider store={ configureStore() }>
         <App />
     </Provider>,
-    document.getElementById('root'));
+    document.getElementById('root')
+);
 
 
 

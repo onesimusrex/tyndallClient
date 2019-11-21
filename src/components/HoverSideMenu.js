@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+
 // import $ from 'jquery';
 // import Keyword_link from "./Keyword_link"
 // import Concept_link from "./Keyword_link"
@@ -6,6 +9,11 @@ import $ from 'jquery';
 
 // see: https://www.codeply.com/go/q0viC0Xu3D/bootstrap-4-multilevel-sidebar-_-hover
 // see https://www.geeksforgeeks.org/hide-scroll-bar-but-while-still-being-able-to-scroll-using-css/
+
+const mapStateToProps = state => ({
+  ...state
+})
+
 
 class HoverSideMenu extends Component {
     constructor(props) {
@@ -17,6 +25,7 @@ class HoverSideMenu extends Component {
       this.LeafClickEvent = this.LeafClickEvent.bind(this);
       this.easeInOutQuad = this.easeInOutQuad.bind(this);
     }
+
 
     dbApiEvent (e){
       console.log(this);
@@ -84,11 +93,9 @@ class HoverSideMenu extends Component {
       return -c/2 * (t*(t-2) - 1) + b;
     }
 
-    render() {
+    render () {
       const sideMenu = this.props.sideMenu;
-      return (
-        // <div className="d-flex mb-3 w-75 mx-auto card bg-warning text-white">
-
+      return ReactDOM.createPortal(
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div id="sidebar">
             <div className="list-group panel">
@@ -96,6 +103,7 @@ class HoverSideMenu extends Component {
                 <i className=""></i>
                 <span className="">
                 <h6 className="barTitle"><div>TECHNICAL</div> <div>GUIDELINES</div></h6>
+                <p>{JSON.stringify(this.props)}</p>
                 </span>
 
                 {/* <div id="searchInput" className="input-group" >
@@ -115,7 +123,6 @@ class HoverSideMenu extends Component {
                     {level1.title.length < 20 ? " | " + level1.title : " | " + level1.title.slice(0,20).trim()+"..."}
                   </span>
                 </a>
-
                 {level1.children.map((level2, index2) =>
                   <div className="collapse" id={"menu"+(index1+1)}>
                       <a csi={level2.code} href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
@@ -152,74 +159,17 @@ class HoverSideMenu extends Component {
                               </span>
                             </a>
                         </div>
-                          
                           )}
-
-
-
                         </div>
                       )}
                   </div>  
                 )}
-  
                 </div>
-              )}
-              
+              )}              
             </div>
-
-<div></div>
-{/* 
-
-            <div className="list-group panel">
-                <a href="#menu1" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className=""></i> <span className="hidden-sm-down">Item 1</span> </a>
-
-                <div className="collapse" id="menu1">
-                    <a href="#menu1sub1" className="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
-                    <div className="collapse" id="menu1sub1">
-                        <a href="#" className="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
-                        <a href="#" className="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
-                        <a href="#menu1sub1sub1" className="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3 c </a>
-                        <div className="collapse" id="menu1sub1sub1">
-                            <a href="#" className="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
-                            <a href="#" className="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
-                        </div>
-                        <a href="#" className="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
-                        <a href="#menu1sub1sub2" className="list-group-item" data-toggle="collapse"  aria-expanded="false">Subitem 5 e </a>
-                        <div className="collapse" id="menu1sub1sub2">
-                            <a href="#" className="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
-                            <a href="#" className="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
-                        </div>
-                    </div>
-                    <a href="#" className="list-group-item" data-parent="#menu1">Subitem 2</a>
-                    <a href="#" className="list-group-item" data-parent="#menu1">Subitem 3</a>
-                </div>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 2</span></a>
-                <a href="#menu3" className="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i className=""></i> <span className="hidden-sm-down">Item 3 </span></a>
-                <div className="collapse" id="menu3">
-                    <a href="#" className="list-group-item" data-parent="#menu3">3.1</a>
-                    <a href="#menu3sub2" className="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
-                    <div className="collapse" id="menu3sub2">
-                        <a href="#" className="list-group-item" data-parent="#menu3sub2">3.2 a</a>
-                        <a href="#" className="list-group-item" data-parent="#menu3sub2">3.2 b</a>
-                        <a href="#" className="list-group-item" data-parent="#menu3sub2">3.2 c</a>
-                    </div>
-                    <a href="#" className="list-group-item" data-parent="#menu3">3.3</a>
-                </div>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 4</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Item 5</span></a> */}
-                {/* <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-o"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className="-chart-o"></i> <span className="hidden-sm-down">Link</span></a>
-                <a href="#" className="list-group-item collapsed" data-parent="#sidebar"><i className=""></i> <span className="hidden-sm-down">Link</span></a> */}
-         
-        {/* </div> */}
-
         </div>
         </div>
-      );
+      ), document.getElementById('side-panel-wrap');
     }
   }
   

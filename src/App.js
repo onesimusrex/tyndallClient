@@ -34,20 +34,20 @@ const mapDispatchToProps = dispatch => ({
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.state =  { 
-    //   "logoiconURL": "",
-    //   "logo-text": "",
-    //   "taglink-text": "",
-    //   "tagline-text": "",
-    //   "inputVal": '',
-    //   "timeout": null,
-    //   "ifsData": [],
-    //   "sideOpen": true,
-    //   "resultNumber": 0,
-    //   "sideMenu": null,
-    //   "currentModal": null, 
-    //   "_360ModalShow": false
-    // };
+    this.state =  { 
+      "logoiconURL": "",
+      "logo-text": "",
+      "taglink-text": "",
+      "tagline-text": "",
+      "inputVal": '',
+      "timeout": null,
+      "ifsData": [],
+      "sideOpen": true,
+      "resultNumber": 0,
+      "sideMenu": null,
+      "currentModal": null, 
+      "_360ModalShow": false
+    };
     this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
     this.closeSide = this.closeSide.bind(this);
@@ -63,13 +63,16 @@ class App extends Component {
     // this.getContent("mainpageimages", this)
     // this.getContent("pdfs", this)
     // this.GetSideMenuData();
-    /*
+    // /*
     this.getContent("mainpagetext", this)
     this.SideBarHandler();
     this.SideMenuUtil();
-    */
+    // */
   }
 
+  simpleAction = (event) => {
+    this.props.simpleAction();
+  }
 
   handleChange(e){
     // console.log(e.target.value)
@@ -386,34 +389,34 @@ class App extends Component {
     }
     
 
-    // const numbers = this.state.ifsData;
-    // const _this =this;
-    // const listItems = numbers.map((item) => 
-    //   <Search_card 
-    //   title={item.title} 
-    //   // body={item.body.length<=300 ? '...' : ""}
-    //   body={item.body}
-    //   csi={item.csi}
-    //   keyword={item.keyword}
-    //   openSide={this.openSide}
-    //   relevance = {item.relevance}
-    //   GetDataAPI = {this.GetDataAPI}
-    //   // concepts={item.concepts.filter(function(item1, index){
-    //   //   return index < 5;
-    //   // }).map(function (item1){
-    //   //   return item1.text;
-    //   // })}
-    //   keywords={item.keywords/*.sort(function(a, b){
-    //     return a.relevance - a.relevance
-    //   })*/.filter(function (item1, index){
-    //     return index<20;
-    //   }).map(function (item1){
-    //     return item1.text;
-    //   })}
-    //   />
-    // );
+    const numbers = this.state.ifsData;
+    const _this =this;
+    const listItems = numbers.map((item) => 
+      <Search_card 
+      title={item.title} 
+      // body={item.body.length<=300 ? '...' : ""}
+      body={item.body}
+      csi={item.csi}
+      keyword={item.keyword}
+      openSide={this.openSide}
+      relevance = {item.relevance}
+      GetDataAPI = {this.GetDataAPI}
+      // concepts={item.concepts.filter(function(item1, index){
+      //   return index < 5;
+      // }).map(function (item1){
+      //   return item1.text;
+      // })}
+      keywords={item.keywords/*.sort(function(a, b){
+        return a.relevance - a.relevance
+      })*/.filter(function (item1, index){
+        return index<20;
+      }).map(function (item1){
+        return item1.text;
+      })}
+      />
+    );
 
-    // const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
+    const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
       
@@ -422,7 +425,11 @@ class App extends Component {
           {JSON.stringify(this.props)}
         </pre>
         <button onClick={this.simpleAction}>Test redux action</button>
-        </div>
+
+      <HoverSideMenu sideMenu={this.state.sideMenu} />
+
+
+      </div>
     );
   }
 }
