@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { simpleAction } from './redux/actions/simpleAction';
 
@@ -17,9 +18,7 @@ import HoverSideMenu from "./components/HoverSideMenu"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
-
-
-//Demo of search tool, side menu and model viewer for the Tyndall Installation website.
+const sideBarRoot = document.getElementById('side-panel-wrap');
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -48,7 +47,6 @@ class App extends Component {
       "currentModal": null, 
       "_360ModalShow": false
     };
-    this.AnimateSearch = this.AnimateSearch.bind(this);
     this.openSide = this.openSide.bind(this);
     this.closeSide = this.closeSide.bind(this);
     this.GetDataAPI = this.GetDataAPI.bind(this);
@@ -204,8 +202,6 @@ class App extends Component {
     })
   }
 
-
-
   GetDataAPI(keyword){
     // console.log('api fired ')
     if (document.getElementById("searchInputText").value != keyword){
@@ -261,11 +257,6 @@ class App extends Component {
     })
   }
 
-  AnimateSearch (){
-    // $("#searchInputText").animate({width:'100%'}, 1000)
-    // console.log('hi there')
-  }
-
   openSide(e){
     // console.log(e)
     // e.preventDefault();
@@ -274,28 +265,12 @@ class App extends Component {
       this.state.sideOpen = true;
     }
     
-    /*
-    
-    document.getElementById("mySidenav").style.width = "500px";
-    document.getElementById("main").style.marginLeft = "500px";
-    clearTimeout(this.state.timeout)
-    var _this = this;
-    this.state.timeout = setTimeout(function (){
-      // _this.closeSide();
-    }, 1500);
-    */
     this.setState({
       "currentModal":e
     })
     var csiString = "[csi='"+e+"']"
     
     var currentCsi = document.querySelector(csiString)
-    // console.log(currentCsi)
-    // $(csiString).parent().parent().parent().trigger("click");
-    
-    // var container = document.querySelector('#sidebar-wrapper')
-    // var myScroller = zenscroll.createScroller(container, 500, 30)
-    // myScroller.intoView(currentCsi)
 
     $('.sideResult').on("click", function(){
       // zenscroll.to(currentCsi)
@@ -305,9 +280,7 @@ class App extends Component {
       console.log("boom")
     })
 
-    // console.log($(csiString).parent().parent().parent().parent().children('a').trigger("click"))
-    // $(csiString).parent().parent().parent().children('a').trigger("click")
-    // $(csiString).parent().parent().children('a').trigger("click")
+
     $('.sideLink > div').attr({
       'aria-expanded':false
     }).addClass('collapse')
@@ -315,22 +288,11 @@ class App extends Component {
       'aria-expanded':false
     }).addClass('collapsed')
     $(csiString).parent().siblings('a').delay().trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click").parent().siblings('a').trigger("click")
-
-    // $(csiString).parent().siblings('a').delay(6000).trigger("click")
-    // $(csiString).parent().siblings('a').parent().siblings('a').delay(4000).trigger("click")
-    // $(csiString).parent().siblings('a').parent().siblings('a').parent().siblings('a').delay(2000).trigger("click")
-    // $(csiString).parent().siblings('a').parent().siblings('a').parent().siblings('a').parent().siblings('a').delay().trigger("click")
-    //zenscroll.to(currentCsi)
   }
 
   closeSide(){
-      // if (this.state.sideOpen == true){
         $("#wrapper").toggleClass("toggled");
         this.state.sideOpen =  !this.state.sideOpen;
-      // }
-      
-      // document.getElementById("mySidenav").style.width = "0";
-      // document.getElementById("main").style.marginLeft = "0";
   }
 
   SideBarHandler(){
@@ -382,13 +344,7 @@ class App extends Component {
       height: searchAreaHeight,
       overflowY: 'auto'
     }
-    
-
-    var mainTopPanel = {
-      // position: 'fixed',
-    }
-    
-
+  
     const numbers = this.state.ifsData;
     const _this =this;
     const listItems = numbers.map((item) => 
@@ -421,17 +377,52 @@ class App extends Component {
     return (
       
       <div>
-        <pre>
+        {/* <pre>
           {JSON.stringify(this.props)}
-        </pre>
-        <button onClick={this.simpleAction}>Test redux action</button>
+        </pre> */}
 
-      <HoverSideMenu sideMenu={this.state.sideMenu} />
+        <SideContent>
+          <HoverSideMenu sideMenu={this.state.sideMenu}/>
+        </SideContent>
+        {/* <button onClick={this.simpleAction}>Test redux action</button> */}
+      {/* <HoverSideMenu sideMenu={this.state.sideMenu} /> */}
 
 
       </div>
     );
   }
+}
+
+class SideContent extends Component {
+  constructor(props){
+    super(props);
+    this.el = document.createElement('div');
+    // this.txt = document.createTextNode("lorem ipsum");
+    // this.el.appendChild(this.txt);
+  }
+
+  componentDidMount(){
+    sideBarRoot.appendChild(this.el)
+  }
+
+  componentWillUnmount(){
+    sideBarRoot.removeChild(this.el)
+  }
+
+  render(){
+    return ReactDOM.createPortal(
+      this.props.children,
+      this.el
+    )
+  }
+}
+
+function Child(){
+  return (
+    <div className="cool">
+      <button>Click</button>
+    </div>
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (App);

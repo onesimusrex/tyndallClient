@@ -76,3 +76,11 @@ h2#home-title {
 
 .border-blue-secondary {
   border-color: #2155AA; }
+
+
+/* ----------------------------------------------------------------
+	React Overrides
+-----------------------------------------------------------------*/
+#side-panel .side-panel-wrap {
+  padding: 0px 0px 0px 0px !important;
+}

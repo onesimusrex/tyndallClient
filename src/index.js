@@ -21,7 +21,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 // import 'select2/dist/js/select2'
 import './scripts/css/hoverSidebar.css'
 import 'font-awesome/css/font-awesome.css'
-import HoverSideMenu from "./components/HoverSideMenu"
+
 
 
 // ReactDOM.render(
