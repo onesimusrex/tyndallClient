@@ -10,8 +10,6 @@ import * as serviceWorker from './serviceWorker';
 
 // import './scripts/css/backgroundVideo.css';
 // import 'bootstrap/dist/css/bootstrap.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle';
 // import './scripts/css/stylesheet.css';
 // import './scripts/css/sideNav.css';

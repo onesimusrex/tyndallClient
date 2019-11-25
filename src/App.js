@@ -16,9 +16,12 @@ import SideBar from "./components/SideBar"
 import HoverSideMenu from "./components/HoverSideMenu"
 // import masterFile from "./scripts/json/masterformat-2016-map.json"
 import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
+import smenu from "./scripts/json/sidemenu.json";
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
 const sideBarRoot = document.getElementById('side-panel-wrap');
+
+
 
 var apiURI = "http://localhost:9000/testAPI/"
 var dataAPIURI = "http://localhost:9000/dataAPI/"
@@ -55,6 +58,7 @@ class App extends Component {
     this.SideMenuUtil = this.SideMenuUtil.bind(this);
     this.GetLevel = this.GetLevel.bind(this);
     this._360Modal = this._360Modal.bind(this);
+    this.processSmenu = this.processSmenu.bind(this);
   }
 
   componentDidMount() {
@@ -64,8 +68,41 @@ class App extends Component {
     // /*
     this.getContent("mainpagetext", this)
     this.SideBarHandler();
-    this.SideMenuUtil();
+    this.processSmenu(masterFile);
     // */
+    // ;
+  }
+
+  processSmenu(masterFile){
+    var _this = this;
+    $.ajax("http://localhost:9000/dataAPI/sidebarDL", {
+      method: "GET",
+      success: function (res){
+        res = JSON.parse(res)
+        console.log(res)
+        var filtered = []
+        // var filtered = masterFile.filter((item) =>{
+        for (var j=0; j<masterFile.length; j++){
+
+       
+          for (var i=0; i<res.length; i++){
+            // console.log(masterFile[j].code + " | " + res[i].csi)
+            if (masterFile[j].code == res[i].csi){
+              // console.log(true)
+              filtered.push(masterFile[j])
+              // return true
+            } else {
+              // console.log(false)
+              // return false
+            }
+          }
+        }
+        // })
+        console.log(filtered)
+        _this.SideMenuUtil(filtered);
+        // return filtered
+      }
+    })
   }
 
   simpleAction = (event) => {
@@ -92,7 +129,8 @@ class App extends Component {
     }, 150);
   }
 
-  SideMenuUtil (){
+  SideMenuUtil (masterFile){
+    // console.log(masterFile)
     var _this = this;
     var menu = []
     // var masterFileL23 = JSON.parse(JSON.stringify(masterFile))
@@ -162,6 +200,7 @@ class App extends Component {
       }
     })
     console.log(menu)
+
     //write menu to file to load offline
     _this.setState({
       "sideMenu": menu

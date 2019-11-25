@@ -12,9 +12,9 @@ class HoverSideMenu extends Component {
       this.state =  { 
       };
       // this.dbApiEvent = this.dbApiEvent.bind(this);
-      this.BuildSideMenu = this.BuildSideMenu.bind(this);
       this.LeafClickEvent = this.LeafClickEvent.bind(this);
       this.easeInOutQuad = this.easeInOutQuad.bind(this);
+      this.upLevelClick = this.upLevelClick.bind(this);
     }
 
     dbApiEvent (e){
@@ -23,12 +23,7 @@ class HoverSideMenu extends Component {
     }
   
     componentDidMount() {
-      this.BuildSideMenu();
       this.LeafClickEvent();
-    }
-
-    BuildSideMenu(){
-    
     }
 
     LeafClickEvent(){
@@ -71,9 +66,6 @@ class HoverSideMenu extends Component {
         }
         animateScroll();
       } else console.log("not an anchor")
-
-
-      // 
     }
 
     easeInOutQuad(t, b, c, d){
@@ -83,11 +75,14 @@ class HoverSideMenu extends Component {
       return -c/2 * (t*(t-2) - 1) + b;
     }
 
+    upLevelClick (e){
+      console.log(e.target)
+    }
+
     render() {
       const sideMenu = this.props.sideMenu;
       return (
         // <div className="d-flex mb-3 w-75 mx-auto card bg-warning text-white">
-
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div id="sidebar">
             <div className="list-group panel">
@@ -105,7 +100,7 @@ class HoverSideMenu extends Component {
               {/* </a> */}
               {this.props.sideMenu != null && sideMenu.map((level1, index1) =>
                 <div>
-                <a csi={level1.code} href={"#menu"+(index1+1)} className="list-group-item collapsed sideLink" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
+                <a csi={level1.code} onClick={this.upLevelClick} href={"#menu"+(index1+1)} className="list-group-item collapsed sideLink" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">
                   <i className=""></i>
                   <span className="hidden-sm-down">
                     {level1.code}
@@ -117,7 +112,7 @@ class HoverSideMenu extends Component {
 
                 {level1.children.map((level2, index2) =>
                   <div className="collapse" id={"menu"+(index1+1)}>
-                      <a csi={level2.code} href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
+                      <a csi={level2.code} onClick={this.upLevelClick} href={"#menu"+(index1+1)+"sub"+(index2+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
                       {/* className="text-white-50" */}
                         <span className="text-white-50">
                           {level2.code}
@@ -129,7 +124,7 @@ class HoverSideMenu extends Component {
                       {/* {console.log(level2)} */}
                       {level2.children.map((level3, index3) => 
                         <div className="collapse" id={"menu"+(index1+1)+"sub"+(index2+1)}>
-                          <a csi={level3.code} href={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
+                          <a csi={level3.code} onClick={this.upLevelClick} href={"#menu"+(index1+1)+"sub"+(index2+1)+"sub"+(index3+1)} className="list-group-item sideLink" data-toggle="collapse" aria-expanded="false">
 
                               <span className="text-white-50">
                                 {level3.code}
