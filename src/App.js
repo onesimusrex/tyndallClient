@@ -63,7 +63,7 @@ class App extends Component {
 
   componentDidMount() {
     // this.getContent("mainpageimages", this)
-    // this.getContent("pdfs", this)
+    this.getContent("pdfs", this)
     // this.GetSideMenuData();
     // /*
     this.getContent("mainpagetext", this)
