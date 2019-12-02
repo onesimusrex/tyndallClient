@@ -281,9 +281,12 @@ class App extends Component {
       method: "GET",
       data: {type: type},
       success: function (res){
-        res = JSON.parse(res)
+        // console.log(res)
+        // res = JSON.parse(res)
         if (type === "mainpageimages"){
+          res = JSON.parse(res)
         } else if (type === "mainpagetext"){
+          res = JSON.parse(res)
           _this.setState({ 
             "logoiconURL": res["logoicon"]["url"],
             "logo-text": res["logo-text"],
@@ -291,6 +294,8 @@ class App extends Component {
              "tagline-text": res["tagline-text"] 
           })
         } else if (type === "pdfs"){
+          // res = JSON.parse(res)
+          console.log(res)
         }
       }
     })
