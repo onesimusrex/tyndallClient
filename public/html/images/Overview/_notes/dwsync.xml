@@ -9,7 +9,6 @@
 <file name="recovery2.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185830083069055" remote="132185830080000000" Dst="1" />
 <file name="tyndallafb.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185846007679226" remote="132185846000000000" Dst="1" />
 <file name="timeline.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185857057434224" remote="132185857050000000" Dst="1" />
-<file name="timeline2.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185858803276249" remote="132185858800000000" Dst="1" />
 <file name="mission.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132185909778153349" remote="132185909770000000" Dst="1" />
 <file name="mission@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132185909782216047" remote="132185909780000000" Dst="1" />
 <file name="energy.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132185909778153349" remote="132185909770000000" Dst="1" />
@@ -28,4 +27,53 @@
 <file name="technology@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132185909782841058" remote="132185909780000000" Dst="1" />
 <file name="aecommasterplan.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185955983648600" remote="132185955980000000" Dst="1" />
 <file name="aecommasterplan@2x.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132185965990064921" remote="132185965990000000" Dst="1" />
+<file name="timeline2x.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132187370090658203" remote="132187370090000000" Dst="1" />
+<file name="advanceplanning.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479317851828" remote="132187479310000000" Dst="1" />
+<file name="departmentandassetmanagement.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479312695571" remote="132187479310000000" Dst="1" />
+<file name="design.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479316601995" remote="132187479310000000" Dst="1" />
+<file name="integratedinfrastructure.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479316445580" remote="132187479310000000" Dst="1" />
+<file name="NetworkConnectivity.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479316758130" remote="132187479310000000" Dst="1" />
+<file name="P3advisoryservice.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479316601995" remote="132187479310000000" Dst="1" />
+<file name="resiliency.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479311445407" remote="132187479310000000" Dst="1" />
+<file name="safetyandcyber security.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479312695571" remote="132187479310000000" Dst="1" />
+<file name="urbanmobility.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479313320489" remote="132187479310000000" Dst="1" />
+<file name="utilities.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187479310039132" remote="132187479310000000" Dst="1" />
+<file name="Redundancy_website.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557829145551" remote="132187557820000000" Dst="1" />
+<file name="Redundancy_website@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557830864272" remote="132187557830000000" Dst="1" />
+<file name="Resourceful_website.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557828364276" remote="132187557820000000" Dst="1" />
+<file name="Resourceful_website@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557830239400" remote="132187557830000000" Dst="1" />
+<file name="Response_website.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557828364276" remote="132187557820000000" Dst="1" />
+<file name="Response_website@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557830239400" remote="132187557830000000" Dst="1" />
+<file name="Robust_website.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557829614308" remote="132187557820000000" Dst="1" />
+<file name="Robust_website@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187557830708453" remote="132187557830000000" Dst="1" />
+<file name="Group 1794.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588949903182" remote="132187588940000000" Dst="1" />
+<file name="Group 1795.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588948653161" remote="132187588940000000" Dst="1" />
+<file name="Group 1796.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588948184381" remote="132187588940000000" Dst="1" />
+<file name="Group 1797.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588946778091" remote="132187588940000000" Dst="1" />
+<file name="Group 1798.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588947403109" remote="132187588940000000" Dst="1" />
+<file name="n_recovery@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588950840719" remote="132187588950000000" Dst="1" />
+<file name="n_redundancy@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588951309507" remote="132187588950000000" Dst="1" />
+<file name="n_resourcefulness@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588950840719" remote="132187588950000000" Dst="1" />
+<file name="n_response@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588949590783" remote="132187588940000000" Dst="1" />
+<file name="n_robustness@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132187588951309507" remote="132187588950000000" Dst="1" />
+<file name="Slide1.JPG" server="//10.109.41.100/www/Tyndall-IFS/" local="132188448233072795" remote="132188448230000000" Dst="1" />
+<file name="Slide2.JPG" server="//10.109.41.100/www/Tyndall-IFS/" local="132188296553283144" remote="132188296550000000" Dst="1" />
+<file name="Group 1814.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188326940151690" remote="132188326940000000" Dst="1" />
+<file name="Group 1815.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188326940620482" remote="132188326940000000" Dst="1" />
+<file name="Slide1@2x.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188448236197921" remote="132188448230000000" Dst="1" />
+<file name="Slide2@2x.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188326941089216" remote="132188326940000000" Dst="1" />
+<file name="Slide1.jpg.BMP" server="//10.109.41.100/www/Tyndall-IFS/" local="132188442251101659" remote="132188442250000000" Dst="1" />
+<file name="Slide1new.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188450493902546" remote="132188450490000000" Dst="1" />
+<file name="pendingdemolished.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188466244786010" remote="132188466240000000" Dst="1" />
+<file name="pendingdemolished1.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188470163670699" remote="132188470160000000" Dst="1" />
+<file name="futuredemolish.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188472582347710" remote="132188472580000000" Dst="1" />
+<file name="demolished.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188489139167005" remote="132188489130000000" Dst="1" />
+<file name="demolishedinprogress.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188489058539238" remote="132188489050000000" Dst="1" />
+<file name="demolished@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188492471937897" remote="132188492470000000" Dst="1" />
+<file name="demolishedinprogress@2x.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188492138957740" remote="132188492130000000" Dst="1" />
+<file name="Group 1158.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188492138332614" remote="132188492130000000" Dst="1" />
+<file name="Group 1159.png" server="//10.109.41.100/www/Tyndall-IFS/" local="132188492471937897" remote="132188492470000000" Dst="1" />
+<file name="Data chart@2x.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188498430423963" remote="132188498430000000" Dst="1" />
+<file name="Mask Group 51.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188498427142672" remote="132188498420000000" Dst="1" />
+<file name="constructionzone.jpg" server="//10.109.41.100/www/Tyndall-IFS/" local="132188518115447954" remote="132188518110000000" Dst="1" />
 </dwsync>

@@ -1208,8 +1208,8 @@ body.top-search-open #top-account { opacity: 0; }
 #page-menu,
 #page-menu-wrap {
 	position: relative;
-	height: 44px;
-	line-height: 44px;
+	height: 80px;
+	line-height: 80px;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 }
 
@@ -1246,7 +1246,7 @@ body.top-search-open #top-account { opacity: 0; }
 	right: 15px;
 	width: 40px;
 	height: 44px;
-	line-height: 44px;
+	line-height: 80px;
 }
 
 #page-menu .menu-title {
@@ -1265,24 +1265,29 @@ body.top-search-open #top-account { opacity: 0; }
 
 #page-menu nav ul {
 	margin-bottom: 0;
-	height: 44px;
+	height: 80px;
 }
 
 #page-menu nav li {
 	position: relative;
 	float: left;
 	list-style: none;
+	max-width: 100px;
 }
 
 #page-menu nav li a {
 	display: block;
-	height: 28px;
+	height: 80px;
 	line-height: 28px;
-	margin: 8px 4px;
-	padding: 0 14px;
+	margin: 0px 0px;
+	
+	padding: 2px 14px;
 	color: #FFF;
 	font-size: 14px;
-	border-radius: 14px;
+	//border-radius: 14px;
+	span {
+		line-height: 14px;
+	}
 }
 
 #page-menu nav li a .icon-angle-down { margin-left: 5px; }

@@ -1942,8 +1942,8 @@ body.top-search-open #top-account {
 #page-menu,
 #page-menu-wrap {
   position: relative;
-  height: 44px;
-  line-height: 44px;
+  height: 80px;
+  line-height: 80px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); }
 
 #page-menu-wrap {
@@ -1985,7 +1985,7 @@ body.top-search-open #top-account {
   right: 15px;
   width: 40px;
   height: 44px;
-  line-height: 44px; }
+  line-height: 80px; }
 
 #page-menu .menu-title {
   float: left;
@@ -2002,22 +2002,24 @@ body.top-search-open #top-account {
 
 #page-menu nav ul {
   margin-bottom: 0;
-  height: 44px; }
+  height: 80px; }
 
 #page-menu nav li {
   position: relative;
   float: left;
-  list-style: none; }
+  list-style: none;
+  max-width: 100px; }
 
 #page-menu nav li a {
   display: block;
-  height: 28px;
+  height: 80px;
   line-height: 28px;
-  margin: 8px 4px;
-  padding: 0 14px;
+  margin: 0px 0px;
+  padding: 2px 14px;
   color: #FFF;
-  font-size: 14px;
-  border-radius: 14px; }
+  font-size: 14px; }
+  #page-menu nav li a span {
+    line-height: 14px; }
 
 #page-menu nav li a .icon-angle-down {
   margin-left: 5px; }
@@ -2438,9 +2440,7 @@ body.side-panel-left.side-push-panel.stretched #header.sticky-header .container 
   width: 330px;
   height: 100%;
   overflow: auto;
-  /* david edit */
-  padding: 50px 70px 50px 40px; 
-}
+  padding: 50px 70px 50px 40px; }
 
 body.device-touch #side-panel .side-panel-wrap {
   overflow-y: scroll; }
@@ -12350,8 +12350,4 @@ body:not(.no-transition) #wrapper,
   margin: 0 2px !important; }
 .rating-container .filled-stars {
   -webkit-text-stroke: 0px !important;
-	text-shadow: none !important; } 
-
-
-
-
+  text-shadow: none !important; }

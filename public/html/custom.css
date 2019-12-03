@@ -47,15 +47,18 @@ h2#home-title {
 .font-size-sm {
   font-size: 18px; }
 
-.font-size-xm {
+.font-size-xs {
   font-size: 12px; }
+
+.font-size-xxs {
+  font-size: 10px; }
 
 /*Fonts Colors*/
 .font-color-primary {
-  color: #1C4595; }
+  color: #1C4595  !important; }
 
 .font-color-white {
-  color: #FFF; }
+  color: #FFF  !important; }
 
 /*Background Colors*/
 .bgcolor-primary {
@@ -77,6 +80,11 @@ h2#home-title {
 .border-blue-secondary {
   border-color: #2155AA; }
 
+/*scroll nav*/
+.newscrollable {
+  height: 100px;
+  overflow-y: scroll;
+}
 
 /* ----------------------------------------------------------------
 	React Overrides

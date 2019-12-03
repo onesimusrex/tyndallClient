@@ -1,0 +1,101 @@
+//Home
+
+h2 {
+	&#home-title{
+		font-size: 48px;
+	}
+}
+
+.home-goals-cards { min-height: 450px;}
+
+/* ----------------------------------------------------------------
+	Responsive CSS
+-----------------------------------------------------------------*/
+
+
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+	h2 {
+		&#home-title{
+			font-size: 48px;
+		}
+	}
+	
+	.home-goals-cards { min-height: 500px}
+}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+	h2 {
+		&#home-title{
+			font-size: 32px;
+		}
+	}
+	
+	.home-goals-cards {min-height: 580px}
+
+}
+
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+	h2 {
+		&#home-title{
+			font-size: 24px;
+		}
+	}
+	
+	.home-goals-cards {min-height: 350px}
+
+}
+
+@media (max-width: 575.98px) {
+
+	h2 {
+		&#home-title{
+			font-size: 18px;
+		}
+	}
+	
+	.home-goals-cards {min-height: 350px}
+}
+
+/* ----------------------------------------------------------------
+	Custom Helper Classes
+-----------------------------------------------------------------*/
+
+/*Fonts Sizes*/
+
+.font-size-xl { font-size: 48px;}
+.font-size-lg { font-size: 32px;}
+.font-size-md { font-size: 24px;}
+.font-size-sm { font-size: 18px;}
+.font-size-xm { font-size: 12px;}
+
+/*Fonts Colors*/
+
+.font-color-primary { color: #1C4595;}
+.font-color-white { color: #FFF;}
+
+/*Background Colors*/
+
+.bgcolor-primary { background-color: #1C4595;}
+.no-bgcolor { background-color: transparent !important;}
+
+/*Margins*/
+
+.top-margin-negative-lg { margin-top: -80px;}
+
+//Borders
+
+.no-borders { border-style: none;}
+
+//Border Colors
+
+.border-blue-primary { border-color: #1C4595;}
+.border-blue-secondary { border-color: #2155AA;}
+
