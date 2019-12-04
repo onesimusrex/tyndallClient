@@ -25,7 +25,9 @@ import masterFile from "./scripts/json/masterformat-2016-with-levels.json"
 import smenu from "./scripts/json/sidemenu.json";
 // import zenscroll from 'zenscroll';
 // import rotate from "./scripts/jquery.360rotate";
+import Home from "./components/Home"
 const sideBarRoot = document.getElementById('side-panel-wrap');
+
 
 
 
@@ -65,6 +67,7 @@ class App extends Component {
     this.GetLevel = this.GetLevel.bind(this);
     this._360Modal = this._360Modal.bind(this);
     this.processSmenu = this.processSmenu.bind(this);
+    this.GetUrl = this.GetUrl.bind(this);
   }
 
   componentDidMount() {
@@ -75,8 +78,13 @@ class App extends Component {
     this.getContent("mainpagetext", this)
     this.SideBarHandler();
     this.processSmenu(masterFile);
+    this.GetUrl();
     // */
     // ;
+  }
+
+  GetUrl(){
+    console.log(window.location.pathname)
   }
 
   processSmenu(masterFile){
@@ -425,20 +433,21 @@ class App extends Component {
     const resultNumMessage = this.state.resultNumber + " results for \"" + this.state.inputVal + "\"";
 
     return (
-      
-      <div>
-        {/* <pre>
-          {JSON.stringify(this.props)}
-        </pre> */}
+      <Router>
+        <div>
+          {/* <pre>
+            {JSON.stringify(this.props)}
+          </pre> */}
+          {/* <Home /> */}
+          {/* <SideContent>
+            <HoverSideMenu sideMenu={this.state.sideMenu}/>
+          </SideContent> */}
+          {/* <button onClick={this.simpleAction}>Test redux action</button> */}
+        {/* <HoverSideMenu sideMenu={this.state.sideMenu} /> */}
 
-        <SideContent>
-          <HoverSideMenu sideMenu={this.state.sideMenu}/>
-        </SideContent>
-        {/* <button onClick={this.simpleAction}>Test redux action</button> */}
-      {/* <HoverSideMenu sideMenu={this.state.sideMenu} /> */}
 
-
-      </div>
+        </div>
+      </Router>
     );
   }
 }

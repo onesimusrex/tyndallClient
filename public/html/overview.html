@@ -43,7 +43,7 @@
 <!-- Document Wrapper
 	============================================= -->
 <div id="wrapper" class="clearfix"></div>
-
+<div id="root"></div>
 <!-- Header
 		============================================= -->
 <header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
@@ -53,14 +53,14 @@
       
       <!-- Logo
 					============================================= -->
-      <div id="logo"> <a href="http://localhost:3000/index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"></a> <a href="http://localhost:3000/index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a> </div>
+      <div id="logo"> <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo"></a> <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a> </div>
       <!-- #logo end --> 
       
       <!-- Primary Navigation
 					============================================= -->
       <nav id="primary-menu" class="">
         <ul>
-          <li class="current"><a href="http://localhost:3000/index.html">
+          <li class="current"><a href="index.html">
             <div>Home</div>
             </a></li>
           <li class="current"><a href="overview.html">
@@ -728,128 +728,120 @@
       <div class="container clearfix">
         <div class="col_full"> <img data-animate="fadeIn" class="aligncenter fadeIn animated" src="images/Overview/constructionzone.jpg" alt="Macbook"> </div>
         <div>
-          <div class="col_half">
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="modal" data-target=".bs-example-modal-lg">
-              <p class="mb-1">XLWU203009</p>
+          <div class="container_milcon">
+            <div class="list-group w-50"> <a href="#collapseExample" class="list-group-item list-group-item-action flex-row align-items-start collapsed" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample">
+              
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-2 font-color-primary ">53 WEG Hangar</h4>
               </div>
+              <p class="mb-1">XLWU203009</p>
               </a> </div>
-            
-          
-            
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                 
+              <div class="list-group w-50"> <a href="#collapseExample2" class="list-group-item list-group-item-action flex-row align-items-start collapsed" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample">
               <p class="mb-1">XLWU203008</p>
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-2 font-color-primary ">53 WEG HQ Facility</h4>
               </div>
               </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="collapse" id="collapseExample" style="">
+                  <div>
+                    <h2>53 WEG Hangar</h2> 
+                    <p>XLWU203009</p>
+                      
+                      
+                    </div>
+              
+                     <div>
+                      <section id="XLWU203009" class="slider-element boxed-slider">
+                        <div class="container align-left">
+                          <div class="fslider" data-animation="fade" data-thumbs="true" data-arrows="false" data-speed="1200" data-pause="7000">
+                            <div class="flexslider" style="height: 348.672px;">
+                              <div class="slider-wrap">
+                                <div class="slide" data-thumb="images/milcon1391/1_53_weg_hangar_site_locations.jpg" data-thumb-alt="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"> <a href="#"> <img src="images/milcon1391/1_53_weg_hangar_site_locations.jpg" alt="Slide 1" draggable="false">
+                                  <div class="flex-caption slider-caption-bg">Site Location</div>
+                                  </a> </div>
+                                <div class="slide image_fade flex-active-slide" data-thumb="images/milcon1391/1_53_weg_hangar_Site Plan.jpg" data-thumb-alt="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"> <a href="#"><img src="images/milcon1391/1_53_weg_hangar_Site Plan.jpg" alt="Slide 2" draggable="false">
+                                  <div class="flex-caption slider-caption-bg slider-caption-bg-light slider-caption-top-left">Site Plan</div>
+                                  </a> </div>
+                                <div class="slide" data-thumb="images/milcon1391/1_53_weg_hangar_floor_plans_1.jpg" data-thumb-alt="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"> <a href="#"> <img src="images/milcon1391/1_53_weg_hangar_floor_plans_1.jpg" alt="Slide 3" draggable="false">
+                                  <div class="flex-caption slider-caption-bg slider-caption-top-right">Floor Plans</div>
+                                  </a> </div>
+                                 <div class="slide" data-thumb="images/milcon1391/1_53_weg_hangar_floor_plans_2.jpg" data-thumb-alt="" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"> <a href="#"> <img src="images/milcon1391/1_53_weg_hangar_floor_plans_2.jpg" alt="Slide 4" draggable="false">
+                                  <div class="flex-caption slider-caption-bg slider-caption-top-right">Floor Plans</div>
+                                  </a> </div>                                
+                              </div>                          
+                          </div>
+                        </div>
+                      </section>
+                      <div class="heading-block"></div>
+                    </div>
+                    
+              
+                    <div>
+                      <h4>Building Summary</h4>
+                      <table class="table table-bordered table-striped">
+                        <tbody>
+                          <tr>
+                            <td>1391 Project Number</td>
+                            <td class="font-color-primary">XLWU203009*</td>
+                          </tr>
+                          <tr>
+                            <td>1391 Project Title</td>
+                            <td class="font-color-primary">53 WEG Hangar</td>
+                          </tr>
+                          <tr>
+                            <td>NEPA ID(post June 2019)</td>
+                            <td class="font-color-primary">1*</td>
+                          </tr>
+                          <tr>
+                            <td>Total Project Cost</td>
+                            <td class="font-color-primary">$133,000,000 **</td>
+                          </tr>
+                          <tr>
+                            <td>Primary Functions</td>
+                            <td class="font-color-primary">Evaluate multi‐domain precision weapons from combat aircraft
+                              and provide full scale and subscale threat‐representative aerial targets for weapons optimization.</td>
+                          </tr>
+                          <tr>
+                            <td>Primary Facilities</td>
+                            <td class="font-color-primary">B290 Hangar; B267 AGE; New Hangar; Fuel Cell Maintenance
+                              Facility; Air Craft Corrosion Control; Hydrazine Facility </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p>*Project numbers and NEPA IDs in this documents are based on
+                      “Baseline Building Occupation” spreadsheet 06.28.2019 version.<br>
+                      **Total project costs in this document are based on 1391 cost estimate
+                      as of 07.07.2019
+                    </p>
+                </div>    
+              <div class="collapse" id="collapseExample2" style="">
+                    <div class="card card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                  </div>    
+            <div class="list-group w-50"> <a href="#" class="list-group-item list-group-item-action flex-row align-items-start">
               <p class="mb-1">XLWU203010</p>
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-2 font-color-primary ">53 WEG Subscale Drone Facility</h4>
               </div>
               </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="list-group w-50"> <a href="#" class="list-group-item list-group-item-action flex-row align-items-start">
               <p class="mb-1">XLWU203046</p>
               <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-2 font-color-primary ">Tyndall AFB Gate Complex</h4>
               </div>
               </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203027</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">AFCEC RDT&amp;E Facilities and Gate</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203002</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Civil Engineer Contracting USACE Complex</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203021</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Logistics Readiness Squadron Complex</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203034</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Silver Flag Facilities</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203033</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Emergency Management, EOC, Alt CP</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203025</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">SFS Mobility Storage Facility</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203012</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Oss Facility</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203019</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">FW AC Maintenance Fuel Cell Hangar</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203016</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Aerospace &amp; Operational Physiology Facility</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203040</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Special Purpose Vehicle Maintenance</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203018</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Oss Facility</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203012</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Aircraft Washrack</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203017</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">OG/MXG HQ</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203028</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">New Lodging Facilities</h4>
-              </div>
-              </a> </div>
-            <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <p class="mb-1">XLWU203031</p>
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-2 font-color-primary ">Deployment Center &amp; Flight Line Dining / AAFES</h4>
-              </div>
-              </a> </div>
+          </div>
+        
+              
+
           </div>
         </div>
+        <!--
         <div>
-          <div class="col_half col_last">
+          <div class="col_one_third">
             <div class="list-group"> <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
               <p class="mb-1">XLWU203013</p>
               <div class="d-flex w-100 justify-content-between">
@@ -964,7 +956,9 @@
                 <h4 class="mb-2 font-color-primary ">F‐35 Munitions Storage</h4>
               </div>
               </a> </div>
+              -->
           </div>
+          
         </div>
       </div>
     </div>
@@ -973,34 +967,170 @@
 	
 	</div>
 	
+	
+	
 	<!-- CONTEXT
 		============================================= -->
 	
+<div class="container clearfix"> 
 	
+	 <div class="heading-block center">
+    <h2>Tyndall Air Force Base</h2>
+    <span>Context of all zone</span> </div>
 	
-<div> 
 	<div class="row clearfix align-items-stretch">
 					
-					<div class="col-lg-8 center" >
+					<div class="col-lg-7 center" >
 						<iframe style="width:100%; height:100%;" src="https://jeg.maps.arcgis.com/apps/webappviewer/index.html?id=4db4b7eff3b644c1be06b7150c88ce30"></iframe>
 					</div>
 
-					<div class="col-lg-4 center col-padding" style="background-color: #F5F5F5;">
+					<div class="col-lg-5 left col-padding" style="background-color: #F5F5F5;">
 						<div class="heading-block nobottomborder">
-							<span class="before-heading color">Tyndall Air Force Base</span>
+							
 							<h3>STATE LOCATION</h3>
 						</div>
 
-						<div class="center bottommargin">
-							<a href="http://vimeo.com/101373765" data-lightbox="iframe" style="position: relative;">
-								<img src="images/services/video.jpg" alt="Video">
-								<span class="i-overlay nobg"><img src="images/icons/video-play.png" alt="Play"></span>
-							</a>
-						</div>
-						<p class="lead nobottommargin">Four USAF bases are located in Florida: Eglin, Tyndall, MacDill, and Patrick. Additional field offices, stations, ranges, and reserve bases support the mission in this coastal state. Tyndall AFB is located on Florida’s northwest coast in Bay County.</p>
+						
+						<p class="nobottommargin">Four USAF bases are located in Florida: Eglin, Tyndall, MacDill, and Patrick. Additional field offices, stations, ranges, and reserve bases support the mission in this coastal state. Tyndall AFB is located on Florida’s northwest coast in Bay County.</p>
 					</div>
 
 				</div>
+	
+	
+	<div class="row clearfix align-items-stretch topmargin-lg">
+					
+		<div class="col-lg-5 left col-padding" style="background-color: #F5F5F5;">
+						<div class="heading-block nobottomborder">
+
+							<h3>REGIONAL LOCATION</h3>
+						</div>
+						
+						<p class="nobottommargin">Tyndall AFB is located in Bay County on the coast of the Gulf of Mexico on approximately 30,000 acres. The nearest municipality is Panama City to the northwest. Eglin AFB is located 90 miles northwest on Choctawhatchee Bay. Tyndall AFB has been identified as a strategic installation with a unique location by the Armed Forces of the United States. The associated Air Space Rights over the Gulf of Mexico are an important component supporting the base’s mission.</p>
+					</div>
+					<div class="col-lg-7 center" >
+						<iframe style="width:100%; height:100%;" src="https://jeg.maps.arcgis.com/apps/webappviewer/index.html?id=4db4b7eff3b644c1be06b7150c88ce30"></iframe>
+					</div>
+
+
+				</div>
+	
+	<div class="row clearfix align-items-stretch topmargin-lg">
+					
+					<div class="col-lg-7 center" >
+						<iframe style="width:100%; height:100%;" src="https://jeg.maps.arcgis.com/apps/webappviewer/index.html?id=4db4b7eff3b644c1be06b7150c88ce30"></iframe>
+					</div>
+
+					<div class="col-lg-5 left col-padding" style="background-color: #F5F5F5;">
+						<div class="heading-block nobottomborder">
+							
+							<h3>REGIONAL LAND USE</h3>
+						</div>
+
+						
+						<p class="nobottommargin">The area surrounding Tyndall AFB comprises two mid-sized cities and five small communities. Panama City (population 37,000) and Panama City Beach (population 12,500) rely on and support Tyndall AFB. Other surrounding communities include Parker, Callaway, Springfield, Lynn Haven, and Mexico Beach. The cities are a mix of residential, commercial, and industrial land uses. The federal government is the largest employer in the metro area, with Tyndall AFB providing the vast majority of jobs. Additionally, tourism plays a role in the economy. Most land outside the municipalities and adjacent to Tyndall AFB is zoned for agricultural purposes.</p>
+					</div>
+
+				</div>
+	
+		<div class="row clearfix align-items-stretch topmargin-lg">
+					
+		<div class="col-lg-5 left col-padding" style="background-color: #F5F5F5;">
+						<div class="heading-block nobottomborder">
+							
+							<h3>TRANSPORTATION CONTEXT</h3>
+						</div>
+						
+						<p class="nobottommargin">The installation is situated on a peninsula with East Bay to the north and Atlantic Ocean to the south. Main access to the base is via US Highway 98 (US 98), which connects Tyndall AFB to Panama City via a causeway. US 98 continues east from Tyndall to Mexico Beach and other locations along the Florida panhandle. Improvements to US 98 are planned by the Florida Department of Transportation, including two overpasses within the Tyndall footprint (Tyndall/Airey and Louisiana). The Tyndall/Airey overpass will include a single point interchange providing access to/from the Tyndall and Airey entry control facilities. The overpass at Louisiana will not include any access to/from US 98 but will allow base traffic to pass under US 98 while staying within the secured perimeter of Tyndall. The Port of Panama City serves as the nearest seaport to Tyndall AFB while NW Florida Beaches International Airport serves as the nearest primary airport with more than 500,000 enplanements in 2018. </p>
+			
+			
+					</div>
+					<div class="col-lg-7 center" >
+						<iframe style="width:100%; height:100%;" src="https://jeg.maps.arcgis.com/apps/webappviewer/index.html?id=4db4b7eff3b644c1be06b7150c88ce30"></iframe>
+					</div>
+
+
+				</div>
+	
+	<div class="row clearfix align-items-stretch topmargin-lg">
+					
+					<div class="col-lg-7 center" >
+						<iframe style="width:100%; height:100%;" src="https://jeg.maps.arcgis.com/apps/webappviewer/index.html?id=4db4b7eff3b644c1be06b7150c88ce30"></iframe>
+					</div>
+
+					<div class="col-lg-5 left col-padding" style="background-color: #F5F5F5;">
+						<div class="heading-block nobottomborder">
+							
+							<h3>EVACUATION ROUTES</h3>
+						</div>
+
+						
+						<p class="nobottommargin">Bay County is considered an emergency evacuation zone by state authorities and has designated the streets shown in blue as evacuation routes. US 98, which bisects Tyndall AFB, is part of an emergency evacuation route.</p>
+					</div>
+
+				</div>
+	
+	</div>
+	
+	
+	
+	
+	
+	<!-- TYNDALL AIR FORCE BASE
+		============================================= -->
+	
+	
+	<div class="section">
+		
+		<div class="container">
+  <div class="col-lg-12 col-md-12 bottommargin topmargin">
+    <div class="fbox-plain; heading-block center">
+      <h2>TYNDALL AIR FORCE BASE</h2>
+      <p>Tyndall AFB served as a critical mission function training F-22 Raptor pilots and maintenance personnel to support combat Air Forces. The base also supports headquarters for 1 AFNORTH, Air Control Squadron, RPA Training, 53 Weapons Evaluation Group, AFCEC, and others. Future plans call for up to three F-35 squadrons, Reaper Wing, associated groups and squadrons, and MQ9 beddown. The original Installation has a dispersed development pattern. The flightline was developed based on the linear layout created by the boundaries of the runways and US 98. The areas around US 98 were built in a suburban pattern with space between facilities. The housing area, located several miles to the west, is separate from other parts of the base. Additional mission elements, including the drone runway and training area, are in isolated locations both east and west of the airfield. As a result, vehicles are required to move between housing and work and between the facilities.</p>
+    </div>
+  </div>
+</div>
+		
+		<div class="row clearfix align-items-stretch bottommargin-lg">
+
+					<div class="col-lg-2 col-md-4 dark center col-padding" style="background-color: #515875;">
+						<i class="i-plain i-xlarge divcenter icon-line2-directions"></i>
+						<div class="counter counter-lined"><span data-from="100" data-to="596" data-refresh-interval="50" data-speed="2000">$596</span>Million </div>
+						<h5>To local Economy each year</h5>
+						<h5>$ 276 Million Military Payroll/year, $ 94 Million Civilians and local Business</h5>
+					</div>
+			<div class="col-lg-2 col-md-4 dark center col-padding" style="background-color: #696FA2;">
+						<i class="i-plain i-xlarge divcenter icon-line2-directions"></i>
+						<div class="counter counter-lined"><span data-from="100" data-to="18502" data-refresh-interval="50" data-speed="2000">18502</span>Population </div>
+						<h5>3395 Military, 1665 Civilian, 4132 Dependents, 9310 Retirees</h5>
+					</div>
+
+					<div class="col-lg-2 col-md-4 dark center col-padding" style="background-color: #576F9E;">
+						<i class="i-plain i-xlarge divcenter icon-line2-graph"></i>
+						<div class="counter counter-lined"><span data-from="3000" data-to="21500" data-refresh-interval="100" data-speed="2500">21500</span></div>
+						<h5>KBs of HTML Files</h5>
+					</div>
+
+					<div class="col-lg-2 col-md-4 dark center col-padding" style="background-color: #6697B9;">
+						<i class="i-plain i-xlarge divcenter icon-line2-layers"></i>
+						<div class="counter counter-lined"><span data-from="10" data-to="408" data-refresh-interval="25" data-speed="3500">408</span></div>
+						<h5>No. of Templates</h5>
+					</div>
+
+					<div class="col-lg-2 col-md-4 dark center col-padding" style="background-color: #88C3D8;">
+						<i class="i-plain i-xlarge divcenter icon-line2-clock"></i>
+						<div class="counter counter-lined"><span data-from="60" data-to="1400" data-refresh-interval="30" data-speed="2700">1400</span></div>
+						<h5>Hours of Coding</h5>
+					</div>
+
+				</div>
+		
+   
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -1008,8 +1138,44 @@
 	</div>
 	
 	
-	
-	
+	<!-- BUILDING DEMOLITION
+	============================================= -->
+
+<div class="container">
+  <div class="col-lg-12 col-md-12 bottommargin topmargin">
+    <div class="fbox-plain; heading-block center">
+      <h3>Building Demolition</h3>
+      <p>To facilitate the progression of the built environment from its current state to its desired end state, the team assembled data from the building surveys and the AECOM Master Plan. Every building that needed to be replaced must go through the approval process sanctioned by Congress. Therefore a complete inventory of demolition projects was compiled to determine what facilities would need to be replaced. The decision matrices used to inform this list compilation are explained in <a href="url">Design Intent</a>. Three demolition categories were identified to bring the current site layout to the end state, including those buildings that have already been demolished, those that are scheduled for demolition due to damage, and buildings that will be demolished to facilitate the arrangement of the Master Plan.</p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div class="col_one_fourth center bounceIn animated" data-animate="bounceIn">
+        <div> <i><a href="#"> <img src="images/Overview/pendingdemolished1.png" alt="Resourcefulness" > </a></i> </div>
+        <div class="counter counter-large" style="color: #0083AD;"><span data-from="100" data-to="8465" data-refresh-interval="50" data-speed="3000">8465</span></div>
+        <h5>Pending Demolished</h5>
+      </div>
+      <div class="col_one_fourth center bounceIn animated" data-animate="bounceIn" data-delay="200">
+        <div> <i><a href="#"> <img src="images/Overview/futuredemolish.png" alt="Resourcefulness" > </a></i> </div>
+        <div class="counter counter-large" style="color: #A90003;"><span data-from="100" data-to="56841" data-refresh-interval="50" data-speed="3000">56841</span></div>
+        <h5>Future Demolished</h5>
+      </div>
+      <div class="col_one_fourth center bounceIn animated" data-animate="bounceIn" data-delay="400">
+        <div> <i><a href="#"> <img src="images/Overview/demolishedinprogress@2x.png" alt="Resourcefulness" > </a></i> </div>
+        <div class="counter counter-large" style="color: #34AA00;"><span data-from="100" data-to="2154" data-refresh-interval="50" data-speed="3000">2154</span></div>
+        <h5>Demolished in Progress</h5>
+      </div>
+      <div class="col_one_fourth center col_last bounceIn animated" data-animate="bounceIn" data-delay="600">
+        <div> <i><a href="#"> <img src="images/Overview/demolished@2x" alt="Resourcefulness" > </a></i> </div>
+        <div class="counter counter-large" style="color: #9b59b6;"><span data-from="100" data-to="874" data-refresh-interval="30" data-speed="3000">874</span></div>
+        <h5>Demolished</h5>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
 	
 	
 	
