@@ -89,7 +89,8 @@ class HoverSideMenu extends Component {
               {/* <a href="#" className="barTitle" aria-expanded="false"> */}
                 <i className=""></i>
                 <span className="">
-                <h6 className="barTitle"><div>TECHNICAL</div> <div>GUIDELINES</div></h6>
+                <a href="/html/technical_guidelines.html"><h6 className="barTitle"><div>TECHNICAL</div> <div>GUIDELINES</div></h6>
+                </a>
                 </span>
 
                 {/* <div id="searchInput" className="input-group" >
